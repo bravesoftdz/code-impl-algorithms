@@ -3,7 +3,7 @@ program AppInterview;
 uses
   Vcl.Forms,
   App in 'App.pas' {Form1},
-  Sample in 'Sample.pas';
+  QuestionsInterview in 'QuestionsInterview.pas';
 
 {$R *.res}
 

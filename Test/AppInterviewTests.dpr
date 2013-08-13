@@ -16,7 +16,8 @@ program AppInterviewTests;
 
 uses
   DUnitTestRunner,
-  TestQuestoinsInterview in 'TestQuestoinsInterview.pas';
+  TestQuestoinsInterview in 'TestQuestoinsInterview.pas',
+  QuestionsInterview in '..\QuestionsInterview.pas';
 
 {$R *.RES}
 
