@@ -24,3 +24,5 @@ Test/*.dcu
 Win32/*.*
 
 __history/*.*
+
+Test/__history/*.*
