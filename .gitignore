@@ -1,0 +1,26 @@
+# Arquivos gerados na compilação do Delphi
+
+*.dcu
+*.exe
+
+*.local
+
+*.identcache
+
+*.dproj
+
+
+Test/*.dcu
+Test/*.exe
+
+Test/*.local
+
+Test/*.identcache
+
+Test/*.dproj
+
+Test/*.dcu
+
+Win32/*.*
+
+__history/*.*
