@@ -1,4 +1,4 @@
-unit App;
+unit Main;
 
 interface
 

@@ -1,8 +1,8 @@
-program AppInterview;
+program AppAlgorithms;
 
 uses
   Vcl.Forms,
-  App in 'App.pas' {Form1},
+  Main in 'Main.pas' {Form1},
   QuestionsInterview in 'QuestionsInterview.pas';
 
 {$R *.res}

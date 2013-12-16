@@ -1,4 +1,4 @@
-program AppInterviewTests;
+program TestAlgoritms;
 {
 
   Delphi DUnit Test Project

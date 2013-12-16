@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D329F7BF-E0B1-4604-AF00-BD88EF4B7654}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AppAlgorithms.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\TestAlgoritms.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AppAlgorithms">
+        <MSBuild Projects="AppAlgorithms.dproj"/>
+    </Target>
+    <Target Name="AppAlgorithms:Clean">
+        <MSBuild Projects="AppAlgorithms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AppAlgorithms:Make">
+        <MSBuild Projects="AppAlgorithms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestAlgoritms">
+        <MSBuild Projects="Test\TestAlgoritms.dproj"/>
+    </Target>
+    <Target Name="TestAlgoritms:Clean">
+        <MSBuild Projects="Test\TestAlgoritms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestAlgoritms:Make">
+        <MSBuild Projects="Test\TestAlgoritms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AppAlgorithms;TestAlgoritms"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AppAlgorithms:Clean;TestAlgoritms:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AppAlgorithms:Make;TestAlgoritms:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
