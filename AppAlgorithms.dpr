@@ -3,7 +3,9 @@ program AppAlgorithms;
 uses
   Vcl.Forms,
   Main in 'Main.pas' {Form1},
-  QuestionsInterview in 'QuestionsInterview.pas';
+  QuestionsInterview in 'QuestionsInterview.pas',
+  Parameters in 'Parameters.pas',
+  TestParameters in 'Test\TestParameters.pas';
 
 {$R *.res}
 

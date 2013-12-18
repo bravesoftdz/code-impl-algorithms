@@ -17,7 +17,9 @@ program TestAlgoritms;
 uses
   DUnitTestRunner,
   TestQuestoinsInterview in 'TestQuestoinsInterview.pas',
-  QuestionsInterview in '..\QuestionsInterview.pas';
+  QuestionsInterview in '..\QuestionsInterview.pas',
+  TestParameters in 'TestParameters.pas',
+  Parameters in '..\Parameters.pas';
 
 {$R *.RES}
 
