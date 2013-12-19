@@ -19,11 +19,17 @@ uses
   TestQuestoinsInterview in 'TestQuestoinsInterview.pas',
   QuestionsInterview in '..\QuestionsInterview.pas',
   TestParameters in 'TestParameters.pas',
-  Parameters in '..\Parameters.pas';
+  Parameters in '..\Parameters.pas',
+  AllocMemory in '..\AllocMemory.pas',
+  TestAllocMemory in 'TestAllocMemory.pas',
+  ListasEncadeadas in '..\ListasEncadeadas.pas',
+  TestListasEncadeadas in 'TestListasEncadeadas.pas';
 
 {$R *.RES}
 
 begin
+  ReportMemoryLeaksOnShutdown:= True;
+
   DUnitTestRunner.RunRegisteredTests;
 end.
 
