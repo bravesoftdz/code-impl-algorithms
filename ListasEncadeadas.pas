@@ -17,8 +17,9 @@ type
       TamanhoLista: Integer; var Status: Boolean );
 
     class procedure Ponteiro();
-    class procedure Ponteiro01();
-    class procedure Ponteiro02();
+    class procedure SimplismenteEncadeada();
+    class procedure SimplismenteEncadeadaComHeader();
+    class procedure DuplamenteEncadeada();
 
   end;
 
@@ -43,6 +44,163 @@ begin
 
 end;
 
+class procedure TListasEncadeadas.DuplamenteEncadeada;
+type
+  PNodo = ^Nodo;
+  Nodo = record
+    Anterior: PNodo;
+    Dado: string;
+    Proximo: PNodo;
+  end;
+
+  PHeader = ^Header;
+  Header = record
+    Inicio: PNodo;
+    Quantidade: Integer;
+    Fim: PNodo;
+  end;
+
+var
+  Head: PHeader;
+
+  procedure InsereEsquerda( const AValor: string );
+  var
+    Temp: PNodo;
+  begin
+    Head^.Quantidade:=
+      Head^.Quantidade + 1;
+
+    New( Temp );
+
+    Temp^.Anterior:= nil;
+    Temp^.Dado:= AValor;
+    Temp^.Proximo:= Head^.Inicio;
+
+    if ( Head^.Quantidade > 1 ) then
+      Head^.Inicio^.Anterior:= Temp;
+
+    Head^.Inicio:= Temp;
+
+    if ( Head^.Fim = nil ) then
+      Head^.Fim:= Temp;
+  end;
+
+  procedure InsereDireta( const AValor: string );
+  var
+    Temp: PNodo;
+  begin
+    Head^.Quantidade:=
+      Head^.Quantidade + 1;
+
+    New( Temp );
+    Temp^.Anterior:= Head^.Fim;
+    Temp^.Dado:= AValor;
+    Temp^.Proximo:= nil;
+
+    if ( Head^.Quantidade > 1 ) then
+      Head^.Fim.Proximo:= Temp;
+
+    Head^.Fim:= Temp;
+
+    if ( Head^.Inicio = nil ) then
+      Head^.Inicio:= Temp;
+
+  end;
+
+  procedure RemoveDireita();
+  var
+    Temp: PNodo;
+  begin
+    Temp:= Head^.Fim.Anterior;
+
+    Temp.Proximo:= nil;
+
+    Dispose( Head^.Fim );
+
+    Head^.Fim:= Temp;
+  end;
+
+  procedure RemoveEsquerda();
+  var
+    Temp: PNodo;
+  begin
+    Temp:= Head^.Inicio^.Proximo;
+
+    Temp^.Anterior:= nil;
+
+    Dispose( Head^.Inicio );
+
+    Head^.Inicio:= Temp;
+  end;
+
+  procedure Mostra();
+  var
+    Temp: PNodo;
+
+    Dados: string;
+  begin
+    Temp:= Head^.Inicio;
+
+    while ( Temp <> nil ) do
+    begin
+      Dados:=
+        Dados + ' ' + Temp^.Dado;
+
+      Temp:= Temp^.Proximo;
+    end;
+
+    ShowMessage( Dados );
+  end;
+
+  procedure MostraTrazFrente();
+  var
+    Temp: PNodo;
+
+    Dados: string;
+  begin
+    Temp:= Head^.Fim;
+    while ( Temp <> nil ) do
+    begin
+      Dados:=
+        Dados + ' ' + Temp^.Dado;
+
+      Temp:= Temp^.Anterior;
+    end;
+
+    ShowMessage( Dados );
+
+  end;
+
+
+
+begin
+  Head^.Inicio:= nil;
+  Head^.Quantidade:= 0;
+  Head^.Fim:= nil;
+
+  InsereEsquerda( 'Johni' );
+  InsereEsquerda( 'Douglas' );
+  InsereEsquerda( 'Marangon' );
+  //Mostra(); // Marangon - Douglas - Johni
+
+  InsereDireta( 'Daniele' );
+  InsereDireta( 'Klein' );
+  //Mostra(); // Marangon - Douglas - Johni - Daniele - Klein
+
+  //RemoveDireita();
+  //RemoveDireita();
+  //Mostra();
+
+//  RemoveEsquerda();
+//  RemoveEsquerda();
+  MostraTrazFrente();
+//  Percore do inicio ao final
+
+end;
+
+
+
+
 class procedure TListasEncadeadas.Ponteiro;
 var
   Int1: Integer;
@@ -57,7 +215,7 @@ begin
 
 end;
 
-class procedure TListasEncadeadas.Ponteiro01;
+class procedure TListasEncadeadas.SimplismenteEncadeada;
 
 type
   PNodo = ^Nodo;
@@ -269,7 +427,7 @@ begin
 
 end;
 
-class procedure TListasEncadeadas.Ponteiro02;
+class procedure TListasEncadeadas.SimplismenteEncadeadaComHeader;
 type
   PNodo = ^Nodo;
   Nodo = record
@@ -317,10 +475,119 @@ var
 
   end;
 
-  procedure InsereDireta();
+  procedure InsereDireta( const AValor : Integer );
+  var
+    Temp: PNodo;
   begin
+    New( Temp );
+
+    Temp^.Dado:= AValor;
+    Temp^.Posicao:= nil;
+
+    Head^.Fim.Posicao:= Temp;
+
+    Head^.Count:= Head^.Count + 1;
+
+    if ( Head^.Inicio = nil ) then
+      Head^.Inicio:= Temp;
+
+    Head^.Fim:= Temp;
 
   end;
+
+  procedure RemoveDireita();
+  var
+    Temp: PNodo;
+  begin
+    if ( Head^.Count <> 0 ) then
+    begin
+      if ( Head^.Count = 1 ) then
+        Head^.Inicio:= nil
+      else begin
+        // Busca o ponteiro do penultimo nodo para definir nil para ele
+        Temp:= Head^.Inicio;
+        while ( Temp^.Posicao <> Head^.Fim ) do
+          Temp:= Temp^.Posicao;
+
+        Temp^.Posicao:= nil;
+      end;
+
+      Dispose( Head^.Fim );
+
+      Head^.Count:= Head^.Count - 1;
+
+      if ( Head^.Count = 1 ) then
+        Head^.Fim := nil
+      else
+        Head^.Fim := Temp;
+
+    end;
+  end;
+
+
+  procedure RemoveEsquerda();
+  var
+    Temp: PNodo;
+  begin
+
+    if ( Head^.Count <> 0 ) then
+    begin
+      Temp:= Head^.Inicio;
+
+      if ( Head^.Count = 1 ) then
+      begin
+        Head^.Fim:= nil;
+      end;
+
+      Head.Inicio:= Head^.Inicio^.Posicao;
+
+      Dispose( Temp );
+      Head^.Count:= Head^.Count - 1;
+    end;
+
+  end;
+
+  procedure MostraLista();
+  var
+    Temp: PNodo;
+
+    Mensagem: string;
+  begin
+
+    Temp:= Head^.Inicio;
+
+    while ( Temp <> nil ) do
+    begin
+      Mensagem:=
+        Mensagem + ' ' + IntToStr( Temp^.Dado );
+
+
+      Temp:= Temp^.Posicao;
+    end;
+    ShowMessage( Mensagem );
+  end;
+
+  procedure Maior();
+  var
+    Dado: Integer;
+    Temp: PNodo;
+  begin
+
+    Temp:= Head^.Inicio;
+    Dado:= Head^.Inicio^.Dado;
+
+    while ( Temp <> nil ) do
+    begin
+      if ( Dado < Temp^.Dado ) then
+        Dado:= Temp^.Dado;
+
+
+      Temp:= Temp^.Posicao;
+    end;
+
+    ShowMessage( 'Maior ' + IntToStr( Dado ) );
+  end;
+
 
 begin
 
@@ -330,9 +597,24 @@ begin
   InsereEsquerda( 50 ); // 50 - 10
   InsereEsquerda( 80 ); // 80 - 50 - 10
 
+  InsereDireta( 20 );  // 80 - 50 - 10 - 20
+  InsereDireta( 40 );  // 80 - 50 - 10 - 20 - 40
+  //Maior();
 
+  RemoveDireita( );    // 80 - 50 - 10 - 20
+
+  //InsereDireta( 100 );
+  //Maior();
+
+  RemoveEsquerda();    // 50 - 10 - 20
+  //InsereEsquerda( 5 );
+  //Maior();
+
+  MostraLista();
 
 end;
+
+{ TO-DO fazer a interseção de duas listas }
 
 end.
 

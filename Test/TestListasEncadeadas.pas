@@ -27,7 +27,9 @@ begin
 //  TListasLineares.Ponteiro();
 
 //  TListasEncadeadas.Ponteiro01();
-TListasEncadeadas.Ponteiro02();
+// TListasEncadeadas.SimplismenteEncadeadaComHeader();
+
+TListasEncadeadas.DuplamenteEncadeada();
 
 end;
 
