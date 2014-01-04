@@ -21,6 +21,7 @@ type
     class procedure SimplismenteEncadeadaComHeader();
     class procedure DuplamenteEncadeada();
 
+    class procedure ListaCircular();
   end;
 
 implementation
@@ -200,6 +201,79 @@ end;
 
 
 
+
+class procedure TListasEncadeadas.ListaCircular;
+
+type
+  PNodo = ^Nodo;
+  Nodo = record
+    Valor: string;
+    Proximo: PNodo;
+  end;
+
+var
+  Atual: PNodo;
+
+
+  procedure Insere( AValor: string );
+  var
+    Temp: PNodo;
+  begin
+    New( Temp );
+
+    Temp^.Valor:= AValor;
+
+    if ( Atual = nil ) then
+    begin
+
+      Atual:= Temp;
+      Atual^.Proximo:= Temp;
+
+    end else
+    begin
+      Temp^.Proximo:= Atual^.Proximo;
+      Atual^.Proximo := Temp;
+      Atual := Temp;
+    end;
+
+  end;
+
+
+  procedure Mostra();
+  var
+    Dados: string;
+    Temp : PNodo;
+  begin
+
+
+     Temp:= Atual^.Proximo;
+     while ( True ) do
+     begin
+       Dados:=
+         Dados + Temp^.Valor + '  ';
+
+       if ( Temp = Atual ) then
+         Break;
+
+       Temp:= Temp^.Proximo;
+     end;
+
+
+    ShowMessage( Dados )
+  end;
+
+begin
+  Atual:= nil;
+
+  Insere( 'Johni' );
+  Insere( 'Douglas' );
+  Insere( 'Marangon' );
+  Mostra();
+
+
+
+
+end;
 
 class procedure TListasEncadeadas.Ponteiro;
 var

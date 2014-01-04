@@ -29,7 +29,10 @@ begin
 //  TListasEncadeadas.Ponteiro01();
 // TListasEncadeadas.SimplismenteEncadeadaComHeader();
 
-TListasEncadeadas.DuplamenteEncadeada();
+//  TListasEncadeadas.DuplamenteEncadeada();
+
+  TListasEncadeadas.ListaCircular();
+
 
 end;
 
