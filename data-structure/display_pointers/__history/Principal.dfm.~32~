@@ -20,7 +20,7 @@ object Form2: TForm2
     Top = 0
     Width = 554
     Height = 433
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -102,6 +102,71 @@ object Form2: TForm2
           Caption = 'BitBtn4'
           TabOrder = 2
           OnClick = BitBtn4Click
+        end
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Matriz Est'#225'tica'
+      ImageIndex = 2
+      object Panel3: TPanel
+        Left = 0
+        Top = 0
+        Width = 546
+        Height = 405
+        Align = alClient
+        BevelOuter = bvNone
+        ParentBackground = False
+        TabOrder = 0
+        object BitBtn5: TBitBtn
+          Left = 31
+          Top = 31
+          Width = 122
+          Height = 34
+          Caption = 'Processar'
+          TabOrder = 0
+        end
+        object StringGrid1: TStringGrid
+          Left = 8
+          Top = 141
+          Width = 529
+          Height = 240
+          DefaultColWidth = 100
+          FixedCols = 0
+          RowCount = 2
+          TabOrder = 1
+        end
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'TabSheet4'
+      ImageIndex = 3
+      object Panel4: TPanel
+        Left = 0
+        Top = 0
+        Width = 546
+        Height = 405
+        Align = alClient
+        BevelOuter = bvNone
+        ParentBackground = False
+        TabOrder = 0
+        object BitBtn6: TBitBtn
+          Left = 359
+          Top = 55
+          Width = 122
+          Height = 34
+          Caption = 'Processar'
+          TabOrder = 0
+          OnClick = BitBtn6Click
+        end
+        object StringGrid2: TStringGrid
+          Left = 8
+          Top = 141
+          Width = 529
+          Height = 240
+          DefaultColWidth = 100
+          FixedCols = 0
+          RowCount = 2
+          TabOrder = 1
         end
       end
     end

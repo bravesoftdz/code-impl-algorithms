@@ -8,6 +8,13 @@ uses
   Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
+  PApontador = ^TNode;
+  TNode = record
+    Valor: string;
+    Proximo: PApontador;
+  end;
+
+
   TForm2 = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
@@ -20,10 +27,27 @@ type
     BitBtn3: TBitBtn;
     GridVDinamico: TStringGrid;
     BitBtn4: TBitBtn;
+    TabSheet3: TTabSheet;
+    Panel3: TPanel;
+    BitBtn5: TBitBtn;
+    StringGrid1: TStringGrid;
+    TabSheet4: TTabSheet;
+    Panel4: TPanel;
+    BitBtn6: TBitBtn;
+    StringGrid2: TStringGrid;
+    BitBtn7: TBitBtn;
+    BitBtn8: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn6Click(Sender: TObject);
+    procedure BitBtn7Click(Sender: TObject);
+    procedure BitBtn8Click(Sender: TObject);
+
+
+  private
+    PrimeiroNo: PApontador;
   public
     VetorEstatico: array [0..4] of Integer;
     VetorDinamicoInt: array of Integer;
@@ -142,17 +166,6 @@ begin
     GridVDinamico.Cells[3, ( IdxGrid )]:= PointerToHexadecinal( VetorDinamicoStr[Indice] );
     GridVDinamico.Cells[4, ( IdxGrid )]:= PointerToDecimal( VetorDinamicoStr[Indice] );
   end;
-
-
-  {
-  SetLength( VetorDinamicoInt, 3 );
-  SetLength( VetorDinamicoStr, 3 );
-
-  SetLength( VetorDinamicoInt, 2 );
-  SetLength( VetorDinamicoStr, 2 );
-  }
-
-
 end;
 
 procedure TForm2.BitBtn4Click(Sender: TObject);
@@ -173,10 +186,71 @@ begin
   pt:= PTypeInfo( @p );
   if ( pT^.Kind = tkWString ) then
   }
+end;
+
+
+procedure TForm2.BitBtn6Click(Sender: TObject);
+var
+  NoAuxiliar: PApontador;
+begin
+  New( NoAuxiliar );  // alocando espaço na memória
+
+  NoAuxiliar.Proximo:=PrimeiroNo;
+  NoAuxiliar.Valor:= InputBox('', 'Digite uma string', '');
+
+  PrimeiroNo:= NoAuxiliar;
+end;
 
 
 
 
+procedure TForm2.BitBtn7Click(Sender: TObject);
+var
+  NoAuxiliar: PApontador;
+  IdxGrid: Integer;
+begin
+
+  NoAuxiliar:= PrimeiroNo;
+  while ( NoAuxiliar <> nil ) do
+  begin
+    GridVDinamico.Cells[0, ( IdxGrid )]:= 'VetorDinamicoStr';
+    GridVDinamico.Cells[1, ( IdxGrid )]:= Indice.ToString;
+    GridVDinamico.Cells[2, ( IdxGrid )]:= VetorDinamicoStr[Indice];
+    GridVDinamico.Cells[3, ( IdxGrid )]:= PointerToHexadecinal( VetorDinamicoStr[Indice] );
+    GridVDinamico.Cells[4, ( IdxGrid )]:= PointerToDecimal( VetorDinamicoStr[Indice] );
+
+    NoAuxiliar:= NoAuxiliar.Proximo;
+  end;
+
+end;
+
+procedure TForm2.BitBtn8Click(Sender: TObject);
+var
+  NoAuxiliar, NoAnterior: PApontador;
+  ValorASerExcluido: string;
+begin
+  ValorASerExcluido:= InputBox('', 'Digite uma string', '');
+
+  // caso tenha somente um registro
+  if ( PrimeiroNo.Proximo = nil ) or ( PrimeiroNo.Valor = ValorASerExcluido ) then
+  begin
+    NoAuxiliar:= PrimeiroNo;
+    PrimeiroNo:= PrimeiroNo.Proximo;
+    Dispose( NoAuxiliar );
+  end else
+  begin
+    NoAuxiliar:= PrimeiroNo;
+    while ( NoAuxiliar.Proximo <> nil ) do
+    begin
+      if ( NoAuxiliar.Proximo.Valor = ValorASerExcluido ) then
+      begin
+        NoAnterior:= NoAuxiliar; // pega o item anterio
+        NoAnterior.Proximo:= NoAuxiliar.Proximo.Proximo; // Mudar o ponteiro para excluir o item
+        Exit();
+      end;
+      NoAuxiliar:= NoAuxiliar.Proximo;
+    end;
+  end;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);

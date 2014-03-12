@@ -25,6 +25,10 @@ object Form2: TForm2
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Vetor Est'#225'tico'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel2: TPanel
         Left = 0
         Top = 0
@@ -66,6 +70,10 @@ object Form2: TForm2
     object TabSheet2: TTabSheet
       Caption = 'Vetor Din'#226'mico'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -108,6 +116,10 @@ object Form2: TForm2
     object TabSheet3: TTabSheet
       Caption = 'Matriz Est'#225'tica'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel3: TPanel
         Left = 0
         Top = 0
@@ -150,15 +162,14 @@ object Form2: TForm2
         ParentBackground = False
         TabOrder = 0
         object BitBtn6: TBitBtn
-          Left = 351
-          Top = 23
+          Left = 359
+          Top = 55
           Width = 122
           Height = 34
-          Caption = 'Add'
+          Caption = 'Processar'
           TabOrder = 0
-          OnClick = BitBtn6Click
         end
-        object GridPonterios: TStringGrid
+        object StringGrid2: TStringGrid
           Left = 8
           Top = 141
           Width = 529
@@ -167,24 +178,6 @@ object Form2: TForm2
           FixedCols = 0
           RowCount = 2
           TabOrder = 1
-        end
-        object BitBtn7: TBitBtn
-          Left = 48
-          Top = 39
-          Width = 137
-          Height = 46
-          Caption = 'BitBtn7'
-          TabOrder = 2
-          OnClick = BitBtn7Click
-        end
-        object BitBtn8: TBitBtn
-          Left = 408
-          Top = 88
-          Width = 75
-          Height = 25
-          Caption = 'BitBtn8'
-          TabOrder = 3
-          OnClick = BitBtn8Click
         end
       end
     end
