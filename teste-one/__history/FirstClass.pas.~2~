@@ -1,0 +1,13 @@
+unit FirstClass;
+
+interface
+
+type
+  TFirstClass = class
+
+  end;
+
+
+implementation
+
+end.

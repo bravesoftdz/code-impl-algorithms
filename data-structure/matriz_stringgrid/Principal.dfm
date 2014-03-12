@@ -18,7 +18,7 @@ object Form2: TForm2
     Top = 208
     Width = 159
     Height = 49
-    Caption = 'Matriz Din'#226'mica'
+    Caption = 'Percorrer Matriz'
     TabOrder = 0
     Visible = False
     OnClick = BitBtn1Click

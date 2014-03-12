@@ -1,0 +1,18 @@
+program TestOne;
+
+{$IFDEF CONSOLE_TESTRUNNER}
+{$APPTYPE CONSOLE}
+{$ENDIF}
+
+uses
+  DUnitTestRunner,
+  ConversorDeNumeroRomano in 'ConversorDeNumeroRomano.pas',
+  TestConversorDeNumeroRomano in 'TestConversorDeNumeroRomano.pas',
+  CarrinhoDeCompras in 'CarrinhoDeCompras.pas';
+
+{$R *.RES}
+
+begin
+  DUnitTestRunner.RunRegisteredTests;
+end.
+

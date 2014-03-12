@@ -1,0 +1,26 @@
+unit TestFirstClass;
+
+interface
+
+uses
+  TestFramework, FirstClass;
+
+type
+  TestTFirstClass = class(TTestCase)
+  published
+
+  end;
+
+implementation
+
+
+procedure TestTFirstClass.TestTest;
+begin
+
+
+end;
+
+initialization
+  RegisterTest(TestTFirstClass.Suite);
+end.
+

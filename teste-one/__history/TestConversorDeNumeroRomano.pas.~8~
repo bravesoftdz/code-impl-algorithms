@@ -1,0 +1,43 @@
+unit TestConversorDeNumeroRomano;
+
+interface
+
+uses
+  TestFramework, FirstClass, ConversorDeNumeroRomano;
+
+type
+  TTestConversorDeNumeroRomano = class(TTestCase)
+  strict private
+    ConversorDeNumeroRomano: TConversorDeNumeroRomano;
+  protected
+   procedure SetUp; override;
+   procedure TearDown; override;
+
+  published
+    procedure deveEntenderOSimboloI;
+  end;
+
+implementation
+
+
+procedure TTestConversorDeNumeroRomano.deveEntenderOSimboloI;
+begin
+  CheckEquals(  );
+end;
+
+procedure TTestConversorDeNumeroRomano.SetUp;
+begin
+  inherited;
+  ConversorDeNumeroRomano:= TConversorDeNumeroRomano.Create();
+end;
+
+procedure TTestConversorDeNumeroRomano.TearDown;
+begin
+  inherited;
+
+end;
+
+initialization
+  RegisterTest(TTestConversorDeNumeroRomano.Suite);
+end.
+

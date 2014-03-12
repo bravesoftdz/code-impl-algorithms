@@ -21,22 +21,20 @@ type
     TabSheet2: TTabSheet;
     Panel1: TPanel;
     Panel2: TPanel;
-    GridDisplay: TStringGrid;
     BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
-    GridVDinamico: TStringGrid;
     BitBtn4: TBitBtn;
     TabSheet3: TTabSheet;
     Panel3: TPanel;
     BitBtn5: TBitBtn;
-    StringGrid1: TStringGrid;
     TabSheet4: TTabSheet;
     Panel4: TPanel;
     BitBtn6: TBitBtn;
-    GridPonterios: TStringGrid;
     BitBtn7: TBitBtn;
     BitBtn8: TBitBtn;
+    GridDisplay: TStringGrid;
+    StatusBar1: TStatusBar;
+    BitBtn2: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
@@ -44,14 +42,16 @@ type
     procedure BitBtn6Click(Sender: TObject);
     procedure BitBtn7Click(Sender: TObject);
     procedure BitBtn8Click(Sender: TObject);
-
-
+    procedure BitBtn2Click(Sender: TObject);
+    procedure PageControl1Changing(Sender: TObject; var AllowChange: Boolean);
+    procedure BitBtn5Click(Sender: TObject);
   private
     PrimeiroNo: PApontador;
   public
     VetorEstatico: array [0..4] of Integer;
     VetorDinamicoInt: array of Integer;
     VetorDinamicoStr: array of String;
+    MatrizDinamica: array of array of string;
   end;
 
 var
@@ -96,7 +96,6 @@ procedure TForm2.BitBtn1Click(Sender: TObject);
 var
   Indice: Integer;
 begin
-
   // popula o vetor
   VetorEstatico[0]:= 1;
   VetorEstatico[1]:= 10;
@@ -114,6 +113,24 @@ begin
     GridDisplay.Cells[2, Succ( Indice )]:= VetorEstatico[Indice].ToString;
     GridDisplay.Cells[3, Succ( Indice )]:= PointerToHexadecinal( VetorEstatico[Indice] );
     GridDisplay.Cells[4, Succ( Indice )]:= PointerToDecimal( VetorEstatico[Indice] );
+  end;
+
+end;
+
+procedure TForm2.BitBtn2Click(Sender: TObject);
+var
+  NoAuxiliar: PApontador;
+  IdxGrid: Integer;
+  Tamanho: Integer;
+begin
+  IdxGrid:= 0;
+
+  NoAuxiliar:= PrimeiroNo;
+  while ( NoAuxiliar <> nil ) do
+  begin
+    Dispose( NoAuxiliar );
+
+    NoAuxiliar:= NoAuxiliar.Proximo;
   end;
 
 end;
@@ -143,28 +160,28 @@ begin
   VetorDinamicoStr[3]:= 'Uruguai';
 
   // Define o tamanho do Grid
-  GridVDinamico.RowCount:= Succ( Length( VetorDinamicoInt ) + Length( VetorDinamicoStr ));
+  GridDisplay.RowCount:= Succ( Length( VetorDinamicoInt ) + Length( VetorDinamicoStr ));
   // Exibe as informações no grid
   for Indice := Low(VetorDinamicoInt) to High(VetorDinamicoInt) do
   begin
     IdxGrid:= Succ( Indice );
 
-    GridVDinamico.Cells[0, IdxGrid]:= 'VetorDinamicoInt';
-    GridVDinamico.Cells[1, IdxGrid]:= Indice.ToString;
-    GridVDinamico.Cells[2, IdxGrid]:= VetorDinamicoInt[Indice].ToString;
-    GridVDinamico.Cells[3, IdxGrid]:= PointerToHexadecinal( VetorDinamicoInt[Indice] );
-    GridVDinamico.Cells[4, IdxGrid]:= PointerToDecimal( VetorDinamicoInt[Indice] );
+    GridDisplay.Cells[0, IdxGrid]:= 'VetorDinamicoInt';
+    GridDisplay.Cells[1, IdxGrid]:= Indice.ToString;
+    GridDisplay.Cells[2, IdxGrid]:= VetorDinamicoInt[Indice].ToString;
+    GridDisplay.Cells[3, IdxGrid]:= PointerToHexadecinal( VetorDinamicoInt[Indice] );
+    GridDisplay.Cells[4, IdxGrid]:= PointerToDecimal( VetorDinamicoInt[Indice] );
   end;
   for Indice := Low(VetorDinamicoStr) to High(VetorDinamicoStr) do
   begin
     // Cálcula o indice da linha no Grid
     IdxGrid:= Succ( Length( VetorDinamicoInt ) + Indice );
 
-    GridVDinamico.Cells[0, ( IdxGrid )]:= 'VetorDinamicoStr';
-    GridVDinamico.Cells[1, ( IdxGrid )]:= Indice.ToString;
-    GridVDinamico.Cells[2, ( IdxGrid )]:= VetorDinamicoStr[Indice];
-    GridVDinamico.Cells[3, ( IdxGrid )]:= PointerToHexadecinal( VetorDinamicoStr[Indice] );
-    GridVDinamico.Cells[4, ( IdxGrid )]:= PointerToDecimal( VetorDinamicoStr[Indice] );
+    GridDisplay.Cells[0, ( IdxGrid )]:= 'VetorDinamicoStr';
+    GridDisplay.Cells[1, ( IdxGrid )]:= Indice.ToString;
+    GridDisplay.Cells[2, ( IdxGrid )]:= VetorDinamicoStr[Indice];
+    GridDisplay.Cells[3, ( IdxGrid )]:= PointerToHexadecinal( VetorDinamicoStr[Indice] );
+    GridDisplay.Cells[4, ( IdxGrid )]:= PointerToDecimal( VetorDinamicoStr[Indice] );
   end;
 end;
 
@@ -188,6 +205,40 @@ begin
   }
 end;
 
+
+procedure TForm2.BitBtn5Click(Sender: TObject);
+var
+  Coluna, Linha, IdxGrid: Integer;
+
+begin
+  IdxGrid:= 0;
+
+  SetLength(MatrizDinamica, 2, 2 );
+
+  MatrizDinamica[0][0]:= 'Brasil';
+  MatrizDinamica[0][1]:= 'Argentina';
+  MatrizDinamica[1][0]:= 'Uruguai';
+  MatrizDinamica[1][1]:= 'Paraguai';
+
+  for Linha := Low(MatrizDinamica) to High(MatrizDinamica) do
+  begin
+    for Coluna := Low(MatrizDinamica[Linha]) to High(MatrizDinamica[Linha]) do
+    begin
+      // Cálcula o indice da linha no Grid
+      Inc( IdxGrid );
+      GridDisplay.RowCount:= Succ( IdxGrid );
+
+      GridDisplay.Cells[0, ( IdxGrid )]:= 'MatrizDinamica';
+      GridDisplay.Cells[1, ( IdxGrid )]:= '[' + Linha.ToString + ',' + Coluna.ToString + ']';
+      GridDisplay.Cells[2, ( IdxGrid )]:= MatrizDinamica[Linha, Coluna];
+      GridDisplay.Cells[3, ( IdxGrid )]:= PointerToHexadecinal( MatrizDinamica[Linha, Coluna] );
+      GridDisplay.Cells[4, ( IdxGrid )]:= PointerToDecimal( MatrizDinamica[Linha, Coluna] );
+
+    end;
+  end;
+
+
+end;
 
 procedure TForm2.BitBtn6Click(Sender: TObject);
 var
@@ -217,12 +268,12 @@ begin
   begin
     Inc( IdxGrid );
 
-    GridPonterios.RowCount:= Succ( IdxGrid );
-    GridPonterios.Cells[0, ( IdxGrid )]:= 'ListaEncadeada(TNode)';
-    GridPonterios.Cells[1, ( IdxGrid )]:= IdxGrid.ToString;
-    GridPonterios.Cells[2, ( IdxGrid )]:= NoAuxiliar.Valor;
-    GridPonterios.Cells[3, ( IdxGrid )]:= Format( '%p', [NoAuxiliar] ) ;
-    GridPonterios.Cells[4, ( IdxGrid )]:= IntToStr( StrToInt('$' + Format( '%p', [NoAuxiliar] ) ) );
+    GridDisplay.RowCount:= Succ( IdxGrid );
+    GridDisplay.Cells[0, ( IdxGrid )]:= 'ListaEncadeada(TNode)';
+    GridDisplay.Cells[1, ( IdxGrid )]:= IdxGrid.ToString;
+    GridDisplay.Cells[2, ( IdxGrid )]:= NoAuxiliar.Valor;
+    GridDisplay.Cells[3, ( IdxGrid )]:= Format( '%p', [NoAuxiliar] ) ;
+    GridDisplay.Cells[4, ( IdxGrid )]:= IntToStr( StrToInt('$' + Format( '%p', [NoAuxiliar] ) ) );
 
     NoAuxiliar:= NoAuxiliar.Proximo;
   end;
@@ -262,10 +313,17 @@ end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-  GridDisplay.Cols[0].Text:= 'Indice Vetor';
-  GridDisplay.Cols[1].Text:= 'Valor Vetor';
-  GridDisplay.Cols[2].Text:= 'Ponteiro(Hex)';
-  GridDisplay.Cols[3].Text:= 'Ponteiro(Dec)';
+  GridDisplay.Cols[0].Text:= 'Variável';
+  GridDisplay.Cols[1].Text:= 'Indice Vetor';
+  GridDisplay.Cols[2].Text:= 'Valor Vetor';
+  GridDisplay.Cols[3].Text:= 'Ponteiro(Hex)';
+  GridDisplay.Cols[4].Text:= 'Ponteiro(Dec)';
+end;
+
+procedure TForm2.PageControl1Changing(Sender: TObject;
+  var AllowChange: Boolean);
+begin
+  GridDisplay.RowCount:= 0
 end;
 
 end.

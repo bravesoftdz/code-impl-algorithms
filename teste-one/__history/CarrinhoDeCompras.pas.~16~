@@ -1,0 +1,56 @@
+unit CarrinhoDeCompras;
+
+interface
+
+uses
+  Generics.Collections;
+
+type
+  TItem = class
+  strict private
+    Descricao: string;
+    Quantidade: Integer;
+    ValorUnitario: Currency;
+  public
+
+  end;
+
+  TCarrinhoDeCompras = class
+  private
+    Itens: TObjectList<TItem>;
+  public
+    constructor Create();
+    destructor Destroy; override;
+
+    procedure Adiciona( Item: TItem );
+    function getItens(): TObjectList<TItem>;
+  end;
+
+implementation
+
+{ TCarrinhoDeCompras }
+
+procedure TCarrinhoDeCompras.Adiciona(Item: TItem);
+begin
+
+end;
+
+
+function TCarrinhoDeCompras.getItens: TObjectList<TItem>;
+begin
+
+end;
+
+constructor TCarrinhoDeCompras.Create;
+begin
+  Itens:= TObjectList<TItem>.Create
+end;
+
+destructor TCarrinhoDeCompras.Destroy;
+begin
+  Itens.Free;
+
+  inherited;
+end;
+
+end.

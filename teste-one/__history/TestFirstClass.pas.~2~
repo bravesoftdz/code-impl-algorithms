@@ -1,0 +1,37 @@
+unit TestFirstClass;
+
+interface
+
+uses
+  TestFramework, FirstClass;
+
+type
+  TestTFirstClass = class(TTestCase)
+  published
+
+  end;
+
+implementation
+
+procedure TestTFirstClass.SetUp;
+begin
+  FFirstClass := TFirstClass.Create;
+end;
+
+procedure TestTFirstClass.TearDown;
+begin
+  FFirstClass.Free;
+  FFirstClass := nil;
+end;
+
+procedure TestTFirstClass.TestTest;
+begin
+  FFirstClass.Test;
+  // TODO: Validate method results
+end;
+
+initialization
+  // Register any test cases with the test runner
+  RegisterTest(TestTFirstClass.Suite);
+end.
+

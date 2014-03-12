@@ -1,0 +1,17 @@
+program TestOne;
+
+{$IFDEF CONSOLE_TESTRUNNER}
+{$APPTYPE CONSOLE}
+{$ENDIF}
+
+uses
+  DUnitTestRunner,
+  FirstClass in 'FirstClass.pas',
+  TestFirstClass in 'TestFirstClass.pas';
+
+{$R *.RES}
+
+begin
+  DUnitTestRunner.RunRegisteredTests;
+end.
+
