@@ -1,9 +1,10 @@
 object Form3: TForm3
   Left = 0
   Top = 0
+  ActiveControl = LabeledEdit1
   Caption = 'Cadastro de Clientes'
-  ClientHeight = 307
-  ClientWidth = 656
+  ClientHeight = 268
+  ClientWidth = 631
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,14 +15,41 @@ object Form3: TForm3
   PixelsPerInch = 96
   TextHeight = 13
   object SpeedButton1: TSpeedButton
-    Left = 114
-    Top = 43
+    Left = 116
+    Top = 27
     Width = 23
     Height = 22
+    Glyph.Data = {
+      36030000424D3603000000000000360000002800000010000000100000000100
+      18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF97BFD74E93
+      BB97BFD7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFF9EC4DA4E93BB8EB8E04E93BBFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9EC4DA5597BE8EB8E04E93
+      BB97BFD7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDCABBC3A389C3A389C3
+      A389DDCABC5597BE8EB8E05597BE9EC4DAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFDDCABBC3A389E2D5C7E2D4C7E1D3C6C19F84969D9D5597BE9EC4DAFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDCABBC3A389E5D8CCE6D9CDE5D8CCE4
+      D6CAE4D7CAC19F84DDCABCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      C3A389E8DCD1EADED4EAE0D5EADED4E8DCD1E5D8CCE2D5C7C3A389FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC3A389EBE1D7EEE4DCEFE6DEEEE4DCEB
+      E1D7E8DCD1E4D6CAC3A389FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      C3A389EEE4DCF2EAE2F3ECE5F2EAE2EEE4DCEADED4E5D8CCC3A389FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDCABBC3A389F3ECE5F6F0EBF3ECE5EF
+      E6DEEAE0D5C3A389DDCABCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFDDCABBC3A389F3ECE5F2EAE2EEE4DCC3A389DDCABCFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDCABBC3A389C3A389C3
+      A389DDCABBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
   end
   object Label1: TLabel
-    Left = 457
-    Top = 114
+    Left = 459
+    Top = 98
     Width = 13
     Height = 13
     Caption = 'UF'
@@ -29,17 +57,17 @@ object Form3: TForm3
   object Panel1: TPanel
     AlignWithMargins = True
     Left = 3
-    Top = 247
-    Width = 650
+    Top = 208
+    Width = 625
     Height = 57
     Align = alBottom
     BorderWidth = 8
     TabOrder = 0
-    ExplicitTop = 231
-    ExplicitWidth = 528
+    ExplicitTop = 247
+    ExplicitWidth = 650
     object BitBtn1: TBitBtn
       AlignWithMargins = True
-      Left = 240
+      Left = 215
       Top = 12
       Width = 95
       Height = 33
@@ -103,11 +131,11 @@ object Form3: TForm3
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       TabOrder = 0
-      ExplicitLeft = 17
+      ExplicitLeft = 240
     end
     object BitBtn2: TBitBtn
       AlignWithMargins = True
-      Left = 139
+      Left = 114
       Top = 12
       Width = 95
       Height = 33
@@ -171,11 +199,11 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 1
-      ExplicitLeft = 0
+      ExplicitLeft = 139
     end
     object BitBtn3: TBitBtn
       AlignWithMargins = True
-      Left = 341
+      Left = 316
       Top = 12
       Width = 95
       Height = 33
@@ -239,11 +267,11 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FF939ED67282D26274D06072CF6E7ED18C98D5FF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 2
-      ExplicitLeft = 219
+      ExplicitLeft = 341
     end
     object BitBtn4: TBitBtn
       AlignWithMargins = True
-      Left = 442
+      Left = 417
       Top = 12
       Width = 95
       Height = 33
@@ -307,11 +335,11 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 3
-      ExplicitLeft = 320
+      ExplicitLeft = 442
     end
     object BitBtn5: TBitBtn
       AlignWithMargins = True
-      Left = 543
+      Left = 518
       Top = 12
       Width = 95
       Height = 33
@@ -375,11 +403,11 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 4
-      ExplicitLeft = 421
+      ExplicitLeft = 543
     end
     object BitBtn6: TBitBtn
       AlignWithMargins = True
-      Left = 38
+      Left = 13
       Top = 12
       Width = 95
       Height = 33
@@ -443,12 +471,12 @@ object Form3: TForm3
         FFFF00FF77777777777777777778787877777778787877777777777777777778
         7878787878787878FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 5
-      ExplicitLeft = 0
+      ExplicitLeft = 38
     end
   end
   object LabeledEdit1: TLabeledEdit
-    Left = 21
-    Top = 44
+    Left = 23
+    Top = 28
     Width = 83
     Height = 21
     EditLabel.Width = 33
@@ -457,8 +485,8 @@ object Form3: TForm3
     TabOrder = 1
   end
   object LabeledEdit2: TLabeledEdit
-    Left = 22
-    Top = 89
+    Left = 24
+    Top = 73
     Width = 289
     Height = 21
     EditLabel.Width = 27
@@ -467,8 +495,8 @@ object Form3: TForm3
     TabOrder = 2
   end
   object LabeledEdit3: TLabeledEdit
-    Left = 23
-    Top = 183
+    Left = 25
+    Top = 167
     Width = 257
     Height = 21
     EditLabel.Width = 28
@@ -477,8 +505,8 @@ object Form3: TForm3
     TabOrder = 3
   end
   object LabeledEdit4: TLabeledEdit
-    Left = 22
-    Top = 131
+    Left = 24
+    Top = 115
     Width = 168
     Height = 21
     EditLabel.Width = 19
@@ -487,8 +515,8 @@ object Form3: TForm3
     TabOrder = 4
   end
   object LabeledEdit5: TLabeledEdit
-    Left = 202
-    Top = 131
+    Left = 204
+    Top = 115
     Width = 114
     Height = 21
     EditLabel.Width = 28
@@ -497,8 +525,8 @@ object Form3: TForm3
     TabOrder = 5
   end
   object LabeledEdit6: TLabeledEdit
-    Left = 331
-    Top = 131
+    Left = 333
+    Top = 115
     Width = 114
     Height = 21
     EditLabel.Width = 33
@@ -507,8 +535,8 @@ object Form3: TForm3
     TabOrder = 6
   end
   object ComboBox1: TComboBox
-    Left = 456
-    Top = 131
+    Left = 458
+    Top = 115
     Width = 57
     Height = 21
     TabOrder = 7

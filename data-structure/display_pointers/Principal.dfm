@@ -1,7 +1,7 @@
 object Form2: TForm2
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'Display Pointers'
   ClientHeight = 370
   ClientWidth = 554
   Color = clBtnFace
