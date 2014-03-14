@@ -20,7 +20,7 @@ object Form2: TForm2
     Top = 0
     Width = 554
     Height = 145
-    ActivePage = TabSheet3
+    ActivePage = TabSheet4
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -164,8 +164,8 @@ object Form2: TForm2
         ParentBackground = False
         TabOrder = 0
         object BitBtn3: TBitBtn
-          Left = 23
-          Top = 32
+          Left = 16
+          Top = 24
           Width = 305
           Height = 50
           Caption = 'Ler posi'#231#245'es da mem'#243'ria'
@@ -295,7 +295,7 @@ object Form2: TForm2
         ParentBackground = False
         TabOrder = 0
         object BitBtn5: TBitBtn
-          Left = 31
+          Left = 16
           Top = 24
           Width = 305
           Height = 50
@@ -416,7 +416,6 @@ object Form2: TForm2
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = -2
         object BitBtn6: TBitBtn
           Left = 351
           Top = 10
@@ -462,7 +461,7 @@ object Form2: TForm2
           OnClick = BitBtn6Click
         end
         object BitBtn7: TBitBtn
-          Left = 24
+          Left = 16
           Top = 24
           Width = 305
           Height = 50
@@ -734,7 +733,6 @@ object Form2: TForm2
     FixedCols = 0
     RowCount = 2
     TabOrder = 1
-    ExplicitTop = 147
   end
   object StatusBar1: TStatusBar
     Left = 0

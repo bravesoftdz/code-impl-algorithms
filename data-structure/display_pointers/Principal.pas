@@ -120,10 +120,7 @@ end;
 procedure TForm2.BitBtn2Click(Sender: TObject);
 var
   NoAuxiliar: PApontador;
-  IdxGrid: Integer;
-  Tamanho: Integer;
 begin
-  IdxGrid:= 0;
 
   NoAuxiliar:= PrimeiroNo;
   while ( NoAuxiliar <> nil ) do
@@ -287,8 +284,8 @@ var
 begin
   ValorASerExcluido:= InputBox('', 'Digite uma string', '');
 
-  // caso tenha somente um registro
-  {
+  // caso tenha somente um registro e o valor a ser excluíd é igual
+  //
   if ( PrimeiroNo.Proximo = nil ) or ( PrimeiroNo.Valor = ValorASerExcluido ) then
   begin
     NoAuxiliar:= PrimeiroNo;
@@ -296,6 +293,7 @@ begin
     Dispose( NoAuxiliar );
   end else
   begin
+    // Percorre o nó até encontrar o registro a ser excluído
     NoAuxiliar:= PrimeiroNo;
     while ( NoAuxiliar.Proximo <> nil ) do
     begin
@@ -303,12 +301,12 @@ begin
       begin
         NoAnterior:= NoAuxiliar; // pega o item anterio
         NoAnterior.Proximo:= NoAuxiliar.Proximo.Proximo; // Mudar o ponteiro para excluir o item
-        Exit();
+        Exit(); // se encontrou o registro sai do laço
       end;
       NoAuxiliar:= NoAuxiliar.Proximo;
     end;
   end;
-  }
+
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
