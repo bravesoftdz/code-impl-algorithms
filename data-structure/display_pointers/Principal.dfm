@@ -3,7 +3,7 @@ object Form2: TForm2
   Top = 0
   Caption = 'Display Pointers'
   ClientHeight = 370
-  ClientWidth = 554
+  ClientWidth = 669
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object Form2: TForm2
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 554
+    Width = 669
     Height = 145
     ActivePage = TabSheet4
     Align = alTop
@@ -30,17 +30,20 @@ object Form2: TForm2
     ParentFont = False
     TabOrder = 0
     OnChanging = PageControl1Changing
+    ExplicitWidth = 554
     object TabSheet1: TTabSheet
       Caption = 'Vetor Est'#225'tico'
+      ExplicitWidth = 546
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 546
+        Width = 661
         Height = 111
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 546
         object BitBtn1: TBitBtn
           Left = 16
           Top = 24
@@ -154,15 +157,17 @@ object Form2: TForm2
     object TabSheet2: TTabSheet
       Caption = 'Vetor Din'#226'mico'
       ImageIndex = 1
+      ExplicitWidth = 546
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 546
+        Width = 661
         Height = 111
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 546
         object BitBtn3: TBitBtn
           Left = 16
           Top = 24
@@ -285,15 +290,17 @@ object Form2: TForm2
     object TabSheet3: TTabSheet
       Caption = 'Matriz Din'#226'mica'
       ImageIndex = 2
+      ExplicitWidth = 546
       object Panel3: TPanel
         Left = 0
         Top = 0
-        Width = 546
+        Width = 661
         Height = 111
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 546
         object BitBtn5: TBitBtn
           Left = 16
           Top = 24
@@ -407,15 +414,17 @@ object Form2: TForm2
     object TabSheet4: TTabSheet
       Caption = 'Lista Encadeada'
       ImageIndex = 3
+      ExplicitWidth = 546
       object Panel4: TPanel
         Left = 0
         Top = 0
-        Width = 546
+        Width = 661
         Height = 111
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 546
         object BitBtn6: TBitBtn
           Left = 351
           Top = 10
@@ -722,23 +731,39 @@ object Form2: TForm2
         end
       end
     end
+    object TabSheet5: TTabSheet
+      Caption = 'Ponteiros'
+      ImageIndex = 4
+      ExplicitWidth = 546
+      object Button1: TButton
+        Left = 192
+        Top = 40
+        Width = 193
+        Height = 41
+        Caption = 'Button1'
+        TabOrder = 0
+        OnClick = Button1Click
+      end
+    end
   end
   object GridDisplay: TStringGrid
     Left = 0
     Top = 145
-    Width = 554
+    Width = 669
     Height = 206
     Align = alClient
     DefaultColWidth = 100
     FixedCols = 0
     RowCount = 2
     TabOrder = 1
+    ExplicitWidth = 554
   end
   object StatusBar1: TStatusBar
     Left = 0
     Top = 351
-    Width = 554
+    Width = 669
     Height = 19
     Panels = <>
+    ExplicitWidth = 554
   end
 end

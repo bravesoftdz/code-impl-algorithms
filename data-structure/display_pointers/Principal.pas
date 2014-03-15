@@ -8,6 +8,7 @@ uses
   Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
+
   PApontador = ^TNode;
   TNode = record
     Valor: String;
@@ -35,6 +36,8 @@ type
     GridDisplay: TStringGrid;
     StatusBar1: TStatusBar;
     BitBtn2: TBitBtn;
+    TabSheet5: TTabSheet;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
@@ -45,6 +48,7 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure PageControl1Changing(Sender: TObject; var AllowChange: Boolean);
     procedure BitBtn5Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     PrimeiroNo: PApontador;
   public
@@ -260,6 +264,9 @@ var
 begin
   IdxGrid:= 0;
 
+
+  GridDisplay.RowCount:= 1;
+
   NoAuxiliar:= PrimeiroNo;
   while ( NoAuxiliar <> nil ) do
   begin
@@ -279,7 +286,7 @@ end;
 
 procedure TForm2.BitBtn8Click(Sender: TObject);
 var
-  NoAuxiliar, NoAnterior: PApontador;
+  NoAuxiliar, NoAnterior, NoAserExcluido: PApontador;
   ValorASerExcluido: string;
 begin
   ValorASerExcluido:= InputBox('', 'Digite uma string', '');
@@ -300,13 +307,37 @@ begin
       if ( NoAuxiliar.Proximo.Valor = ValorASerExcluido ) then
       begin
         NoAnterior:= NoAuxiliar; // pega o item anterio
-        NoAnterior.Proximo:= NoAuxiliar.Proximo.Proximo; // Mudar o ponteiro para excluir o item
-        Exit(); // se encontrou o registro sai do laço
+        NoAserExcluido:= NoAuxiliar.Proximo;
+
+        NoAnterior.Proximo:= NoAserExcluido.Proximo; // Mudar o ponteiro para excluir o item
+
+        Dispose( NoAserExcluido );
+        Exit();
       end;
       NoAuxiliar:= NoAuxiliar.Proximo;
     end;
   end;
 
+end;
+
+procedure TForm2.Button1Click(Sender: TObject);
+var
+  Nome: ^string;
+
+  SobreNome: string;
+  Ptr: ^string;
+begin
+  New( Nome );
+
+  Nome^:= 'Aula';
+
+  SobreNome:= 'EDII';
+
+  Ptr:= @SobreNome;
+
+  ShowMessage( Ptr^ );
+
+  Dispose( Nome );
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
