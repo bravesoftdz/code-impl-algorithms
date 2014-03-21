@@ -413,13 +413,13 @@ begin
     until ( NoAuxiliar = NoLDEAtual );
   end;
 
-  ShowMessage( 'para trás' );
+  ShowMessage( 'para tráz' );
   if ( NoAuxiliar <> nil ) then
   begin
     repeat
       ShowMessage( NoAuxiliar.Valor );
 
-      NoAuxiliar:= NoAuxiliar.Anterior;
+      NoAuxiliar:= NoAuxiliar.Proximo;
     until ( NoAuxiliar = NoLDEAtual );
   end;
 

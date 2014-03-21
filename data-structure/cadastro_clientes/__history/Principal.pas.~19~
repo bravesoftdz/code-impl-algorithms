@@ -50,7 +50,6 @@ type
 var
   Form3: TForm3;
   PrimeiroNo: PApontador = nil; // no cabeca
-  NoAtual:PApontador = nil; // no atual usado na navegacao
 
 implementation
 

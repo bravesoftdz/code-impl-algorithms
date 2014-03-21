@@ -80,7 +80,6 @@ type
     procedure BitBtn15Click(Sender: TObject);
     procedure BitBtn14Click(Sender: TObject);
     procedure BitBtn17Click(Sender: TObject);
-    procedure BitBtn20Click(Sender: TObject);
 
   public
     VetorEstatico: array [0..4] of Integer;
@@ -354,9 +353,9 @@ begin
   NoAuxiliar.valor:= InputBox('', 'Digite uma string', '');
   if ( NoLDEAtual = nil ) then
   begin
-    NoLDEAtual:= NoAuxiliar;
     NoLDEAtual.Anterior:= NoAuxiliar;
     NoLDEAtual.Proximo:= NoAuxiliar;
+    NoLDEAtual:= NoAuxiliar;
   end else
   begin
     // Faz a atualização dos ponteiros
@@ -392,35 +391,6 @@ begin
     GridDisplay.Cells[2, Succ( Indice )]:= VetorEstatico[Indice].ToString;
     GridDisplay.Cells[3, Succ( Indice )]:= PointerToHexadecinal( VetorEstatico[Indice] );
     GridDisplay.Cells[4, Succ( Indice )]:= PointerToDecimal( VetorEstatico[Indice] );
-  end;
-
-end;
-
-procedure TForm2.BitBtn20Click(Sender: TObject);
-var
-  NoAuxiliar: PLDEApontador;
-
-begin
-  NoAuxiliar:= NoLDEAtual;
-
-  ShowMessage( 'para frente' );
-  if ( NoAuxiliar <> nil ) then
-  begin
-    repeat
-      ShowMessage( NoAuxiliar.Valor );
-
-      NoAuxiliar:= NoAuxiliar.Proximo;
-    until ( NoAuxiliar = NoLDEAtual );
-  end;
-
-  ShowMessage( 'para trás' );
-  if ( NoAuxiliar <> nil ) then
-  begin
-    repeat
-      ShowMessage( NoAuxiliar.Valor );
-
-      NoAuxiliar:= NoAuxiliar.Anterior;
-    until ( NoAuxiliar = NoLDEAtual );
   end;
 
 end;

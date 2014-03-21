@@ -1,0 +1,42 @@
+unit DrawImage;
+
+interface
+
+uses
+  Vcl.Graphics;
+
+type
+  TWImage = array of array of TColor;
+
+  IDrawImage = interface
+    ['{31D67045-A2D8-4679-81DE-EB5E21A1887A}']
+    function Image(): TWImage;
+  end;
+
+  TMarioBros = class(TInterfacedObject, IDrawImage)
+  public
+    function Image(): TWImage;
+  end;
+
+implementation
+
+uses
+  Vcl.Dialogs;
+
+
+function TMarioBros.Image: TWImage;
+var
+  Line: Integer;
+  Column: Integer;
+begin
+  SetLength( Result, 2, 2 );
+
+  for Line := Low( Result ) to High( Result ) do
+    for Column := Low( Result[Line] ) to High( Result[Line] ) do
+       Result[ Line, Column ]:= clWhite;
+
+
+
+end;
+
+end.

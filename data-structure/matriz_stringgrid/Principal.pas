@@ -92,7 +92,6 @@ begin
       Print(IndiceColuna, IndiceLinha, MatrizCores[IndiceLinha, IndiceColuna] );
     end;
   end;
-
 end;
 
 end.

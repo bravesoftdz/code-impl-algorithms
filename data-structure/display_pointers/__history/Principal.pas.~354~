@@ -410,19 +410,8 @@ begin
       ShowMessage( NoAuxiliar.Valor );
 
       NoAuxiliar:= NoAuxiliar.Proximo;
-    until ( NoAuxiliar = NoLDEAtual );
+    until ( NoAuxiliar = NoAtual );
   end;
-
-  ShowMessage( 'para trás' );
-  if ( NoAuxiliar <> nil ) then
-  begin
-    repeat
-      ShowMessage( NoAuxiliar.Valor );
-
-      NoAuxiliar:= NoAuxiliar.Anterior;
-    until ( NoAuxiliar = NoLDEAtual );
-  end;
-
 end;
 
 procedure TForm2.BitBtn2Click(Sender: TObject);

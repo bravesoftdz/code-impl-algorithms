@@ -18,10 +18,10 @@ type
   public
     { Public declarations }
     //MatrizEstatica: array [0..1, 0..3] of string;
-    MatrizEstatica: array[0..1] of array[0..3] of string;
+    MatrizEstatica: array[0..4] of array[0..3] of string;
     MatrizDinamica: array of array of string;
 
-    MatrizCores: array[0..1] of array[0..3] of TColor;
+    MatrizCores: array[0..4] of array[0..3] of TColor;
   end;
 
 var
@@ -52,8 +52,6 @@ begin
       ShowMessage( MatrizDinamica[IndiceLinha, IndiceColuna] );
     end;
   end;
-
-
   // Random(256 * 256 * 256); // seleciona uma cor aleatoriamente
 end;
 
@@ -76,7 +74,6 @@ var
     StringGrid1.Canvas.FillRect(R);
   end;
 
-
 begin
   // Cria a matriz de cores
   for IndiceLinha := Low( MatrizCores ) to High(MatrizCores) do
@@ -87,10 +84,6 @@ begin
     end;
   end;
 
-  // Define o tamanho do Grid
-  StringGrid1.RowCount:= Length( MatrizCores );
-  StringGrid1.ColCount:= Length( MatrizCores[0] );
-
   // Pinta no Grid a matriz de cores
   for IndiceLinha := Low( MatrizCores ) to High(MatrizCores) do
   begin
@@ -99,6 +92,7 @@ begin
       Print(IndiceColuna, IndiceLinha, MatrizCores[IndiceLinha, IndiceColuna] );
     end;
   end;
+
 end;
 
 end.

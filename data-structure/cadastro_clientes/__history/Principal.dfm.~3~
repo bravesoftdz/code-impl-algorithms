@@ -12,7 +12,6 @@ object Form3: TForm3
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object SpeedButton1: TSpeedButton
@@ -47,7 +46,6 @@ object Form3: TForm3
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-    OnClick = SpeedButton1Click
   end
   object Label1: TLabel
     Left = 459
@@ -131,7 +129,6 @@ object Form3: TForm3
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       TabOrder = 0
-      OnClick = BitBtn1Click
     end
     object BitBtn2: TBitBtn
       AlignWithMargins = True
@@ -199,7 +196,6 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 1
-      OnClick = BitBtn2Click
     end
     object BitBtn3: TBitBtn
       AlignWithMargins = True
@@ -468,7 +464,6 @@ object Form3: TForm3
         FFFF00FF77777777777777777778787877777778787877777777777777777778
         7878787878787878FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 5
-      OnClick = BitBtn6Click
     end
   end
   object LabeledEdit1: TLabeledEdit
