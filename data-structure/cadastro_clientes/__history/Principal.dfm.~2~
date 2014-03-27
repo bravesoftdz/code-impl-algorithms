@@ -12,7 +12,6 @@ object Form3: TForm3
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object SpeedButton1: TSpeedButton
@@ -47,7 +46,6 @@ object Form3: TForm3
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
-    OnClick = SpeedButton1Click
   end
   object Label1: TLabel
     Left = 459
@@ -65,6 +63,8 @@ object Form3: TForm3
     Align = alBottom
     BorderWidth = 8
     TabOrder = 0
+    ExplicitTop = 247
+    ExplicitWidth = 650
     object BitBtn1: TBitBtn
       AlignWithMargins = True
       Left = 215
@@ -131,7 +131,7 @@ object Form3: TForm3
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       TabOrder = 0
-      OnClick = BitBtn1Click
+      ExplicitLeft = 240
     end
     object BitBtn2: TBitBtn
       AlignWithMargins = True
@@ -199,7 +199,7 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 1
-      OnClick = BitBtn2Click
+      ExplicitLeft = 139
     end
     object BitBtn3: TBitBtn
       AlignWithMargins = True
@@ -267,6 +267,7 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FF939ED67282D26274D06072CF6E7ED18C98D5FF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 2
+      ExplicitLeft = 341
     end
     object BitBtn4: TBitBtn
       AlignWithMargins = True
@@ -334,6 +335,7 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 3
+      ExplicitLeft = 442
     end
     object BitBtn5: TBitBtn
       AlignWithMargins = True
@@ -401,6 +403,7 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 4
+      ExplicitLeft = 543
     end
     object BitBtn6: TBitBtn
       AlignWithMargins = True
@@ -468,7 +471,7 @@ object Form3: TForm3
         FFFF00FF77777777777777777778787877777778787877777777777777777778
         7878787878787878FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 5
-      OnClick = BitBtn6Click
+      ExplicitLeft = 38
     end
   end
   object LabeledEdit1: TLabeledEdit

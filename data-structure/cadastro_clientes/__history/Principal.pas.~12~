@@ -40,7 +40,6 @@ type
     procedure BitBtn6Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,7 +49,6 @@ type
 var
   Form3: TForm3;
   PrimeiroNo: PApontador = nil; // no cabeca
-  NoAtual:PApontador = nil; // no atual usado na navegacao
 
 implementation
 
@@ -65,7 +63,7 @@ begin
   begin
     if ( NoAuxiliar.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
     begin
-      NoAuxiliar.Valor.Nome:= LabeledEdit2.Text;
+      NoAuxiliar.Valor.Nome:= LabeledEdit2.Text:= ;
 
     end;
     NoAuxiliar:= NoAuxiliar.Apontador;
@@ -76,6 +74,7 @@ procedure TForm3.BitBtn2Click(Sender: TObject);
 var
   NoAuxiliar: PApontador;
 begin
+
   New( NoAuxiliar );
 
   NoAuxiliar.Apontador:= PrimeiroNo;
@@ -84,8 +83,6 @@ begin
   NoAuxiliar.Valor.Codigo:= StrToInt( LabeledEdit1.Text );
 
   PrimeiroNo:= NoAuxiliar;
-
-  MessageDlg( 'Registro gravado con sucesso!', mtInformation, [mbOK], 0 );
 end;
 
 procedure TForm3.BitBtn6Click(Sender: TObject);
@@ -118,22 +115,6 @@ begin
     NoAuxiliar:= NoAuxiliar.Apontador;
   end;
 
-end;
-
-procedure TForm3.SpeedButton1Click(Sender: TObject);
-var
-  NoAuxiliar: PApontador;
-begin
- NoAuxiliar:= PrimeiroNo;
-  while ( NoAuxiliar <> nil ) do
-  begin
-    if ( NoAuxiliar.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
-    begin
-      LabeledEdit2.Text:=  NoAuxiliar.Valor.Nome;
-
-    end;
-    NoAuxiliar:= NoAuxiliar.Apontador;
-  end;
 end;
 
 end.

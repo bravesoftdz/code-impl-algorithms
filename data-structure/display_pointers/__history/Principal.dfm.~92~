@@ -1422,7 +1422,7 @@ object Form2: TForm2
       end
       object BitBtn18: TBitBtn
         Left = 463
-        Top = 19
+        Top = 22
         Width = 90
         Height = 33
         Caption = 'Excluir'

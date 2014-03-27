@@ -50,7 +50,6 @@ type
 var
   Form3: TForm3;
   PrimeiroNo: PApontador = nil; // no cabeca
-  NoAtual:PApontador = nil; // no atual usado na navegacao
 
 implementation
 
@@ -65,7 +64,7 @@ begin
   begin
     if ( NoAuxiliar.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
     begin
-      NoAuxiliar.Valor.Nome:= LabeledEdit2.Text;
+      NoAuxiliar.Valor.Nome:= LabeledEdit2.Text:= ;
 
     end;
     NoAuxiliar:= NoAuxiliar.Apontador;
@@ -76,6 +75,7 @@ procedure TForm3.BitBtn2Click(Sender: TObject);
 var
   NoAuxiliar: PApontador;
 begin
+
   New( NoAuxiliar );
 
   NoAuxiliar.Apontador:= PrimeiroNo;
@@ -84,8 +84,6 @@ begin
   NoAuxiliar.Valor.Codigo:= StrToInt( LabeledEdit1.Text );
 
   PrimeiroNo:= NoAuxiliar;
-
-  MessageDlg( 'Registro gravado con sucesso!', mtInformation, [mbOK], 0 );
 end;
 
 procedure TForm3.BitBtn6Click(Sender: TObject);
@@ -129,7 +127,7 @@ begin
   begin
     if ( NoAuxiliar.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
     begin
-      LabeledEdit2.Text:=  NoAuxiliar.Valor.Nome;
+      NoAuxiliar.Valor.Nome:= LabeledEdit2.Text:= ;
 
     end;
     NoAuxiliar:= NoAuxiliar.Apontador;
