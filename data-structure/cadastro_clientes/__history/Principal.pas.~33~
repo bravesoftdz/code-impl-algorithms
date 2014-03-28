@@ -140,16 +140,17 @@ end;
 
 procedure TForm3.BitBtn6Click(Sender: TObject);
 var
-  NoAuxiliar: PLDEApontador;
+  NoAuxiliar: PApontador;
+
 begin
 
-  NoAuxiliar:= LDEPrimeiroNo;
+  NoAuxiliar:= PrimeiroNo;
   while ( NoAuxiliar <> nil ) do
   begin
     ShowMessage( IntToStr( NoAuxiliar.Valor.Codigo ) + ' ' +
       NoAuxiliar.Valor.Nome );
 
-    NoAuxiliar:= NoAuxiliar.Anterior;
+    NoAuxiliar:= NoAuxiliar.Apontador;
   end;
 
 end;

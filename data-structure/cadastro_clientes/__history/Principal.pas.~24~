@@ -42,7 +42,6 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
-    procedure BitBtn5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,16 +88,13 @@ begin
 
   PrimeiroNo:= NoAuxiliar;
 
-  LabeledEdit1.Clear();
-  LabeledEdit2.Clear();
-
-  MessageDlg( 'Registro gravado con sucesso!',
-    mtInformation, [mbOK], 0 );
+  MessageDlg( 'Registro gravado con sucesso!', mtInformation, [mbOK], 0 );
 end;
 
 procedure TForm3.BitBtn4Click(Sender: TObject);
 var
   NoAuxiliar, NoAnterior, NoAserExcluido: PApontador;
+  ValorASerExcluido: string;
 begin
 
   if ( PrimeiroNo.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
@@ -112,44 +108,37 @@ begin
     NoAuxiliar:= PrimeiroNo;
     while ( NoAuxiliar.Apontador <> nil ) do
     begin
-      if ( NoAuxiliar.Apontador.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
+      if ( NoAuxiliar.Proximo.Valor = ValorASerExcluido ) then
       begin
         NoAnterior:= NoAuxiliar; // pega o item anterio
-        NoAserExcluido:= NoAuxiliar.Apontador;
+        NoAserExcluido:= NoAuxiliar.Proximo;
 
-        // Mudar o ponteiro para excluir o item
-        NoAnterior.Apontador:= NoAserExcluido.Apontador;
+        NoAnterior.Proximo:= NoAserExcluido.Proximo; // Mudar o ponteiro para excluir o item
 
         Dispose( NoAserExcluido );
-
         Exit();
       end;
-      NoAuxiliar:= NoAuxiliar.Apontador;
+      NoAuxiliar:= NoAuxiliar.Proximo;
     end;
   end;
 
-
 end;
 
-procedure TForm3.BitBtn5Click(Sender: TObject);
-begin
-  if ( MessageDlg( 'Deseja sair?', mtConfirmation, [ mbYes, mbNo ], 0 ) ) = mrYes then
-
-  Close();
 end;
 
 procedure TForm3.BitBtn6Click(Sender: TObject);
 var
-  NoAuxiliar: PLDEApontador;
+  NoAuxiliar: PApontador;
+
 begin
 
-  NoAuxiliar:= LDEPrimeiroNo;
+  NoAuxiliar:= PrimeiroNo;
   while ( NoAuxiliar <> nil ) do
   begin
     ShowMessage( IntToStr( NoAuxiliar.Valor.Codigo ) + ' ' +
       NoAuxiliar.Valor.Nome );
 
-    NoAuxiliar:= NoAuxiliar.Anterior;
+    NoAuxiliar:= NoAuxiliar.Apontador;
   end;
 
 end;

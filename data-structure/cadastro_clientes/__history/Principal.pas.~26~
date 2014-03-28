@@ -42,7 +42,6 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
-    procedure BitBtn5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,16 +88,13 @@ begin
 
   PrimeiroNo:= NoAuxiliar;
 
-  LabeledEdit1.Clear();
-  LabeledEdit2.Clear();
-
-  MessageDlg( 'Registro gravado con sucesso!',
-    mtInformation, [mbOK], 0 );
+  MessageDlg( 'Registro gravado con sucesso!', mtInformation, [mbOK], 0 );
 end;
 
 procedure TForm3.BitBtn4Click(Sender: TObject);
 var
   NoAuxiliar, NoAnterior, NoAserExcluido: PApontador;
+
 begin
 
   if ( PrimeiroNo.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
@@ -128,28 +124,23 @@ begin
     end;
   end;
 
-
 end;
 
-procedure TForm3.BitBtn5Click(Sender: TObject);
-begin
-  if ( MessageDlg( 'Deseja sair?', mtConfirmation, [ mbYes, mbNo ], 0 ) ) = mrYes then
-
-  Close();
 end;
 
 procedure TForm3.BitBtn6Click(Sender: TObject);
 var
-  NoAuxiliar: PLDEApontador;
+  NoAuxiliar: PApontador;
+
 begin
 
-  NoAuxiliar:= LDEPrimeiroNo;
+  NoAuxiliar:= PrimeiroNo;
   while ( NoAuxiliar <> nil ) do
   begin
     ShowMessage( IntToStr( NoAuxiliar.Valor.Codigo ) + ' ' +
       NoAuxiliar.Valor.Nome );
 
-    NoAuxiliar:= NoAuxiliar.Anterior;
+    NoAuxiliar:= NoAuxiliar.Apontador;
   end;
 
 end;

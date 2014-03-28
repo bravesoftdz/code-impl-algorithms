@@ -55,7 +55,7 @@ begin
                TreeView1.Selected:= NodeTemp;
 
                TempNome := Diretorio+'\' + F.Name;
-               ListarArquivos(TempNome);
+               ListarArquivos(TempNome, True);
 
              end;
          end else
@@ -86,7 +86,7 @@ end;
 procedure TForm3.BitBtn2Click(Sender: TObject);
 begin
   TreeView1.Items.Clear;
-  ListarArquivos( Edit1.Text );
+  ListarArquivos( Edit1.Text, True );
 end;
 
 

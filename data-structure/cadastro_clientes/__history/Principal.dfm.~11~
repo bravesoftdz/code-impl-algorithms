@@ -2,7 +2,6 @@ object Form3: TForm3
   Left = 0
   Top = 0
   ActiveControl = LabeledEdit1
-  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Clientes'
   ClientHeight = 268
   ClientWidth = 631
@@ -335,7 +334,6 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 3
-      OnClick = BitBtn4Click
     end
     object BitBtn5: TBitBtn
       AlignWithMargins = True
@@ -403,7 +401,6 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 4
-      OnClick = BitBtn5Click
     end
     object BitBtn6: TBitBtn
       AlignWithMargins = True
@@ -482,7 +479,6 @@ object Form3: TForm3
     EditLabel.Width = 33
     EditLabel.Height = 13
     EditLabel.Caption = 'C'#243'digo'
-    NumbersOnly = True
     TabOrder = 1
   end
   object LabeledEdit2: TLabeledEdit

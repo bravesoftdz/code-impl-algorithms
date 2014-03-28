@@ -15,6 +15,7 @@ type
 
   PLDEApontador = ^TLDENode;
   TLDENode = record
+    Anterior: PLDEApontador;
     valor: TCliente;
     Proximo: PLDEApontador;
   end;
@@ -48,6 +49,7 @@ type
     BitBtn11: TBitBtn;
     BitBtn12: TBitBtn;
     TabSheet7: TTabSheet;
+    BitBtn13: TBitBtn;
     BitBtn14: TBitBtn;
     BitBtn15: TBitBtn;
     BitBtn16: TBitBtn;
@@ -56,7 +58,6 @@ type
     BitBtn18: TBitBtn;
     BitBtn19: TBitBtn;
     BitBtn20: TBitBtn;
-    BitBtn13: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);

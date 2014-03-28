@@ -86,7 +86,7 @@ end;
 procedure TForm3.BitBtn2Click(Sender: TObject);
 begin
   TreeView1.Items.Clear;
-  ListarArquivos( Edit1.Text );
+  ListarArquivos( Edit1.Text, True );
 end;
 
 

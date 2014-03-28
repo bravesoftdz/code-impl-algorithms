@@ -1,9 +1,9 @@
 object Form3: TForm3
   Left = 0
   Top = 0
-  Caption = #193'rvores'
+  Caption = 'Form3'
   ClientHeight = 342
-  ClientWidth = 844
+  ClientWidth = 643
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,8 +14,8 @@ object Form3: TForm3
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 509
-    Top = 52
+    Left = 308
+    Top = 47
     Width = 61
     Height = 13
     Caption = 'Diret'#243'rio raiz'
@@ -23,23 +23,23 @@ object Form3: TForm3
   object TreeView1: TTreeView
     Left = 9
     Top = 7
-    Width = 480
+    Width = 285
     Height = 322
     Images = ImageList1
     Indent = 19
     TabOrder = 0
   end
   object Edit1: TEdit
-    Left = 509
-    Top = 68
+    Left = 308
+    Top = 63
     Width = 327
     Height = 21
     TabOrder = 1
     Text = 'D:\Bases'
   end
   object BitBtn1: TBitBtn
-    Left = 681
-    Top = 13
+    Left = 480
+    Top = 8
     Width = 155
     Height = 41
     Caption = 'Selecionar Diret'#243'rio'
@@ -97,8 +97,8 @@ object Form3: TForm3
     OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
-    Left = 643
-    Top = 293
+    Left = 442
+    Top = 288
     Width = 193
     Height = 41
     Caption = 'Crair '#225'rvore de diret'#243'rios'
@@ -156,8 +156,8 @@ object Form3: TForm3
     OnClick = BitBtn2Click
   end
   object ImageList1: TImageList
-    Left = 524
-    Top = 294
+    Left = 332
+    Top = 286
     Bitmap = {
       494C010102000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010

@@ -1,0 +1,111 @@
+unit Principal;
+
+interface
+
+uses
+  FileCtrl,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.ImgList;
+
+type
+  TForm2 = class(TForm)
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    ListView1: TListView;
+    TreeView1: TTreeView;
+    ImageList1: TImageList;
+    procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+  private
+    { Private declarations }
+
+    procedure ListarDiretorios( const ADiretorio: string );
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.BitBtn1Click(Sender: TObject);
+var
+  Diretorio: string;
+begin
+  if SelectDirectory('Selecione um diretório', '', Diretorio) then
+    ShowMessage( Diretorio )
+
+end;
+
+procedure TForm2.BitBtn2Click(Sender: TObject);
+var
+  NodeTemp: TTreeNode;
+  DescricaoNo: string;
+begin
+
+  if ( InputQuery( '', 'Diretório', DescricaoNo ) ) then
+  begin
+    NodeTemp:=  TreeView1.Items.AddChild( nil {TreeView1.Selected }, DescricaoNo );
+    NodeTemp.ImageIndex:= 0;
+    NodeTemp.SelectedIndex:= 0;
+    TreeView1.Selected:= NodeTemp;
+  end;
+
+end;
+
+procedure TForm2.BitBtn3Click(Sender: TObject);
+var
+  NodeTemp: TTreeNode;
+  DescricaoNo: string;
+begin
+
+  if ( InputQuery( '', 'Arquivo', DescricaoNo ) ) then
+  begin
+    NodeTemp:=  TreeView1.Items.AddChild( TreeView1.Selected , DescricaoNo );
+    NodeTemp.ImageIndex:= 1;
+    NodeTemp.SelectedIndex:= 1;
+    TreeView1.Selected:= NodeTemp;
+  end;
+
+end;
+
+procedure TForm2.ListarDiretorios(const ADiretorio: string);
+var
+  F: TSearchRec;
+  Ret: Integer;
+  TempNome: string;
+  NodeTemp: TTreeNode;
+begin
+  Ret := FindFirst(ADiretorio+'\*.*', faAnyFile, F);
+  try
+    while Ret = 0 do
+    begin
+
+      if (F.Attr and faDirectory = faDirectory) then
+      begin
+        if (F.Name <> '.') and (F.Name <> '..') then
+        begin
+          TempNome := ADiretorio+'\' + F.Name;
+          ListView1.AddItem( TempNome, nil );
+          ListarDiretorios(TempNome);
+        end;
+      end else
+      begin
+       ListView1.AddItem( F.Name, nil );
+      end;
+
+      Ret := FindNext(F);
+    end;
+  finally
+    FindClose(F);
+  end;
+end;
+
+end.

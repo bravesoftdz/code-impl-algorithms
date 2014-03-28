@@ -2,7 +2,6 @@ object Form3: TForm3
   Left = 0
   Top = 0
   ActiveControl = LabeledEdit1
-  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Clientes'
   ClientHeight = 268
   ClientWidth = 631
@@ -403,7 +402,6 @@ object Form3: TForm3
         FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
         00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
       TabOrder = 4
-      OnClick = BitBtn5Click
     end
     object BitBtn6: TBitBtn
       AlignWithMargins = True

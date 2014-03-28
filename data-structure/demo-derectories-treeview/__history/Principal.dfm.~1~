@@ -1,0 +1,64 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 417
+  ClientWidth = 535
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object BitBtn1: TBitBtn
+    Left = 412
+    Top = 8
+    Width = 115
+    Height = 25
+    Caption = 'Selecionar diret'#243'rio'
+    TabOrder = 0
+  end
+  object BitBtn2: TBitBtn
+    Left = 247
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Add Diret'#243'rio'
+    TabOrder = 1
+  end
+  object BitBtn3: TBitBtn
+    Left = 247
+    Top = 39
+    Width = 75
+    Height = 25
+    Caption = 'Add Arquivo'
+    TabOrder = 2
+  end
+  object BitBtn4: TBitBtn
+    Left = 277
+    Top = 228
+    Width = 115
+    Height = 25
+    Caption = 'Listar diret'#243'rio'
+    TabOrder = 3
+  end
+  object ListView1: TListView
+    Left = 277
+    Top = 259
+    Width = 250
+    Height = 150
+    Columns = <>
+    TabOrder = 4
+  end
+  object TreeView1: TTreeView
+    Left = 8
+    Top = 8
+    Width = 233
+    Height = 233
+    Indent = 19
+    TabOrder = 5
+  end
+end

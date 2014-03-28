@@ -89,8 +89,7 @@ begin
 
   PrimeiroNo:= NoAuxiliar;
 
-  LabeledEdit1.Clear();
-  LabeledEdit2.Clear();
+
 
   MessageDlg( 'Registro gravado con sucesso!',
     mtInformation, [mbOK], 0 );
@@ -99,6 +98,7 @@ end;
 procedure TForm3.BitBtn4Click(Sender: TObject);
 var
   NoAuxiliar, NoAnterior, NoAserExcluido: PApontador;
+
 begin
 
   if ( PrimeiroNo.Valor.Codigo = StrToInt( LabeledEdit1.Text ) ) then
@@ -140,16 +140,17 @@ end;
 
 procedure TForm3.BitBtn6Click(Sender: TObject);
 var
-  NoAuxiliar: PLDEApontador;
+  NoAuxiliar: PApontador;
+
 begin
 
-  NoAuxiliar:= LDEPrimeiroNo;
+  NoAuxiliar:= PrimeiroNo;
   while ( NoAuxiliar <> nil ) do
   begin
     ShowMessage( IntToStr( NoAuxiliar.Valor.Codigo ) + ' ' +
       NoAuxiliar.Valor.Nome );
 
-    NoAuxiliar:= NoAuxiliar.Anterior;
+    NoAuxiliar:= NoAuxiliar.Apontador;
   end;
 
 end;
