@@ -20,7 +20,7 @@ object Form2: TForm2
     Top = 0
     Width = 1020
     Height = 145
-    ActivePage = TabSheet8
+    ActivePage = TabSheet7
     Align = alTop
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

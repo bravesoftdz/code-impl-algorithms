@@ -17,6 +17,7 @@ type
   TLDENode = record
     valor: TCliente;
     Proximo: PLDEApontador;
+    Anterior: PLDEApontador;
   end;
 
   TForm2 = class(TForm)
@@ -104,6 +105,17 @@ var
 
 
   NoAtual: PApontador = nil;
+
+
+
+
+
+
+
+
+
+
+
   NoLDEAtual: PLDEApontador = nil;
 
 

@@ -8,18 +8,16 @@ uses
   Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
-
-  PApontador = ^TNode;
-  TNode = record
-    Valor: string;
-    Proximo: PApontador;
+  TCliente = record
+    Codigo: Integer;
+    Nome: string
   end;
 
   PLDEApontador = ^TLDENode;
   TLDENode = record
-    Anterior: PLDEApontador;
-    valor: string;
+    valor: TCliente;
     Proximo: PLDEApontador;
+    Anterios
   end;
 
   TForm2 = class(TForm)
@@ -51,7 +49,6 @@ type
     BitBtn11: TBitBtn;
     BitBtn12: TBitBtn;
     TabSheet7: TTabSheet;
-    BitBtn13: TBitBtn;
     BitBtn14: TBitBtn;
     BitBtn15: TBitBtn;
     BitBtn16: TBitBtn;
@@ -60,6 +57,7 @@ type
     BitBtn18: TBitBtn;
     BitBtn19: TBitBtn;
     BitBtn20: TBitBtn;
+    BitBtn13: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
@@ -92,10 +90,32 @@ type
 var
   Form2: TForm2;
   PrimeiroNo: PApontador = nil;
+
+
+
+
+
+
+
   LDEPrimeiroNo: PLDEApontador = nil;
   LDEUltimoNo: PLDEApontador = nil;
 
+
+
+
+
   NoAtual: PApontador = nil;
+
+
+
+
+
+
+
+
+
+
+
   NoLDEAtual: PLDEApontador = nil;
 
 
@@ -164,14 +184,8 @@ begin
   // verifica se é o nulo o valor do item atual que esta sendo percorrido
   while ( NoAuxiliar <> nil ) do
   begin
-    Inc( IdxGrid );
 
-    GridDisplay.RowCount:= Succ( IdxGrid );
-    GridDisplay.Cells[0, ( IdxGrid )]:= 'Loop Fim';
-    GridDisplay.Cells[1, ( IdxGrid )]:= IdxGrid.ToString;
-    GridDisplay.Cells[2, ( IdxGrid )]:= NoAuxiliar.Valor;
-    GridDisplay.Cells[3, ( IdxGrid )]:= Format( '%p', [NoAuxiliar] ) ;
-    GridDisplay.Cells[4, ( IdxGrid )]:= IntToStr( StrToInt('$' + Format( '%p', [NoAuxiliar] ) ) );
+
 
     NoAuxiliar:= NoAuxiliar.Anterior; // atualiza o valor do item atual
   end;
@@ -410,8 +424,19 @@ begin
       ShowMessage( NoAuxiliar.Valor );
 
       NoAuxiliar:= NoAuxiliar.Proximo;
-    until ( NoAuxiliar = NoAtual );
+    until ( NoAuxiliar = NoLDEAtual );
   end;
+
+  ShowMessage( 'para trás' );
+  if ( NoAuxiliar <> nil ) then
+  begin
+    repeat
+      ShowMessage( NoAuxiliar.Valor );
+
+      NoAuxiliar:= NoAuxiliar.Anterior;
+    until ( NoAuxiliar = NoLDEAtual );
+  end;
+
 end;
 
 procedure TForm2.BitBtn2Click(Sender: TObject);
@@ -621,7 +646,9 @@ begin
 
   NoAuxiliar.Proximo:= LDEPrimeiroNo; // o valor do próximo item deve ser o primeiro item
   NoAuxiliar.Anterior:= nil; // sempre nil, pois estamos inserindo no início da lista
-  NoAuxiliar.Valor:= InputBox( '', 'Digite o nome', '' );
+
+  NoAuxiliar.Valor.Codigo:= StrTOInt( LabeledEdit1.Text )
+  NoAuxiliar.Valor.Nome:= LabeledEdit2.Text
 
   // Ataualia o nó anterior do último item da lista
   if ( LDEPrimeiroNo <> nil ) and ( LDEPrimeiroNo.Anterior = nil ) then
