@@ -41,6 +41,7 @@ type
     procedure EdtPlacaVeiculoEnter(Sender: TObject);
     procedure EdtPlacaVeiculoExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
   private
 
     const
@@ -176,6 +177,11 @@ begin
       EdtPlacaVeiculo.BorderColor:= clGreen;
   end;
 
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  EdtPlacaVeiculo.BorderColor:= clGreen;
 end;
 
 procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);

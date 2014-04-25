@@ -39,6 +39,8 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure EdtPlacaVeiculoEnter(Sender: TObject);
+    procedure EdtPlacaVeiculoExit(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
 
     const
@@ -63,6 +65,7 @@ begin
     Canvas.Handle := GetWindowDC(Handle);
     Canvas.Pen.Style := psSolid;
     Canvas.Pen.Color := AColor;
+    Canvas.Pen.Width:= 1;
     Canvas.Brush.Style := bsClear;
     Canvas.Rectangle(0, 0, Width, Height);
   finally
@@ -135,7 +138,6 @@ begin
     ShowMessage('RegEx Válido')
   else
     ShowMessage('RegEx Inválido')
-
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -161,6 +163,27 @@ end;
 procedure TForm1.EdtPlacaVeiculoEnter(Sender: TObject);
 begin
   EdtPlacaVeiculo.BorderColor:= clBlue;
+end;
+
+procedure TForm1.EdtPlacaVeiculoExit(Sender: TObject);
+begin
+
+  if ( EdtPlacaVeiculo.Text <> EmptyStr ) then
+  begin
+    if not ( TRegEx.IsMatch( EdtPlacaVeiculo.Text, REGEX_PLACA_VEICULO ) ) then
+      EdtPlacaVeiculo.BorderColor:= clRed
+    else
+      EdtPlacaVeiculo.BorderColor:= clGreen;
+  end;
+
+end;
+
+procedure TForm1.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  case Key of
+    #13: SelectNext( ActiveControl, True, True );
+    #27: SelectNext( ActiveControl, False, True );
+  end;
 end;
 
 end.
