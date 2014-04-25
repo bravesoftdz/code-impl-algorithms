@@ -147,15 +147,6 @@ object Form2: TForm2
       OnClick = BitBtn3Click
     end
   end
-  object BitBtn4: TBitBtn
-    Left = 480
-    Top = 28
-    Width = 145
-    Height = 71
-    Caption = 'Excluir'
-    TabOrder = 7
-    OnClick = BitBtn4Click
-  end
   object ImageList1: TImageList
     Height = 32
     Width = 32

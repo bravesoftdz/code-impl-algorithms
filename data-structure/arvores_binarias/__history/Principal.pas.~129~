@@ -87,7 +87,7 @@ begin
   Estados[1].Sigla:= '';
   Estados[1].Nome:= '';
 
-  Estados[2].Codigo:= 10;
+  Estados[2].Codigo:= 9;
   Estados[2].Sigla:= '';
   Estados[2].Nome:= '';
 
@@ -114,6 +114,7 @@ begin
   Estados[8].Codigo:= 13;
   Estados[8].Sigla:= '';
   Estados[8].Nome:= '';
+
   {
   Estado.Codigo:= StrToInt( EdtCodigo.Text );
   Estado.Sigla:= EdtSiglaEstado.Text;

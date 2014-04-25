@@ -154,7 +154,6 @@ object Form2: TForm2
     Height = 71
     Caption = 'Excluir'
     TabOrder = 7
-    OnClick = BitBtn4Click
   end
   object ImageList1: TImageList
     Height = 32

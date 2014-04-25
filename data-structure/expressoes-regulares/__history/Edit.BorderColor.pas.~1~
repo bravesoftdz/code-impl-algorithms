@@ -1,0 +1,106 @@
+unit Edt.BorderColor;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls;
+
+type
+  TEditBorderColor =  class helper for TEdit
+  private
+    FCanvas: TCanvas;
+    FBorderColor: TColor;
+    FFocusedBorderColor: TColor;
+
+    procedure WMPaint(var Message: TWMPaint); message WM_PAINT;
+    procedure SetBorderColor(const Value: TColor);
+
+  protected
+    procedure PaintWindow(DC: HDC); override;
+    procedure Paint; virtual;
+
+  public
+
+    property Canvas: TCanvas read FCanvas;
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy(); override;
+
+  published
+    property BorderColor: TColor read FBorderColor write SetBorderColor;
+    property FocusedBorderColor: TColor read FFocusedBorderColor
+      write FFocusedBorderColor;
+
+  end;
+
+procedure Register;
+
+implementation
+
+
+constructor TEditBorderColor.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+  FCanvas := TControlCanvas.Create;
+  TControlCanvas(FCanvas).Control := Self;
+end;
+
+destructor TEditBorderColor.Destroy();
+begin
+  FCanvas.Free;
+  inherited Destroy();
+end;
+
+procedure TEditBorderColor.WMPaint(var Message: TWMPaint);
+begin
+  inherited;
+  PaintWindow(Message.DC);
+end;
+
+procedure TEditBorderColor.PaintWindow(DC: HDC);
+
+begin
+  FCanvas.Lock;
+  try
+    FCanvas.Handle := DC;
+    try
+      TControlCanvas(FCanvas).UpdateTextFlags;
+      Paint;
+    finally
+      FCanvas.Handle := 0;
+    end;
+  finally
+    FCanvas.Unlock;
+  end;
+  inherited;
+end;
+
+procedure TEditBorderColor.SetBorderColor(const Value: TColor);
+begin
+  FBorderColor := Value;
+end;
+
+procedure TEditBorderColor.Paint;
+var
+  l_mX, l_mY: Integer;
+begin
+  if not Focused then
+  begin
+    FCanvas.Pen.Color := Self.FBorderColor;
+  end
+  else
+  begin
+    FCanvas.Pen.Color := Self.FFocusedBorderColor;
+  end;
+  l_mX := Self.Width - 1;
+  l_mY := Self.Height - 1;
+  FCanvas.MoveTo(0, 0);
+  FCanvas.LineTo(l_mX, 0);
+  FCanvas.LineTo(l_mX, l_mY);
+  FCanvas.LineTo(0, l_mY);
+  FCanvas.LineTo(0, 0);
+
+  inherited;
+end;
+
+end.

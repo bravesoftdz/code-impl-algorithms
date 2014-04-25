@@ -1,0 +1,99 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 288
+  ClientWidth = 451
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 24
+    Top = 7
+    Width = 33
+    Height = 13
+    Caption = 'Campo'
+  end
+  object Label2: TLabel
+    Left = 26
+    Top = 63
+    Width = 31
+    Height = 13
+    Caption = 'RegEx'
+  end
+  object Edit1: TEdit
+    Left = 24
+    Top = 26
+    Width = 121
+    Height = 21
+    TabOrder = 0
+    Text = 'EdtCampo'
+  end
+  object Edit2: TEdit
+    Left = 24
+    Top = 82
+    Width = 121
+    Height = 21
+    TabOrder = 1
+    Text = 'Edit2'
+  end
+  object BitBtn1: TBitBtn
+    Left = 184
+    Top = 24
+    Width = 75
+    Height = 25
+    Caption = 'Validar 01'
+    TabOrder = 2
+    OnClick = BitBtn1Click
+  end
+  object BitBtn2: TBitBtn
+    Left = 184
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = 'Validar 02'
+    TabOrder = 3
+    OnClick = BitBtn2Click
+  end
+  object Button1: TButton
+    Left = 336
+    Top = 49
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 4
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 336
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = 'Button2'
+    TabOrder = 5
+    OnClick = Button2Click
+  end
+  object Memo1: TMemo
+    Left = 24
+    Top = 152
+    Width = 185
+    Height = 105
+    Lines.Strings = (
+      '^\d{5}-\d{3}$'
+      '^[A-Z]{3}\d{4}$')
+    TabOrder = 6
+  end
+  object Memo2: TMemo
+    Left = 226
+    Top = 152
+    Width = 185
+    Height = 105
+    TabOrder = 7
+  end
+end

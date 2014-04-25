@@ -1,0 +1,121 @@
+unit Edt.BorderColor;
+
+interface
+
+uses
+Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+StdCtrls;
+
+
+type
+TJxEdit = class(TEdit)
+
+private
+  { Private declarations }
+  FCanvas : TCanvas;
+  FBorderColor: TColor;
+  FFocusedBorderColor: TColor;
+
+  procedure WMPaint(var Message: TWMPaint); message WM_PAINT;
+  procedure SetBorderColor(const Value: TColor);
+
+protected
+    { Protected declarations }
+    procedure PaintWindow(DC: HDC); override;
+    procedure Paint; virtual;
+
+
+public
+    { Public declarations }
+    property Canvas: TCanvas read FCanvas;
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy(); override;
+
+published
+    { Published declarations }
+    property BorderColor :TColor  read FBorderColor write SetBorderColor;
+    property FocusedBorderColor :TColor read FFocusedBorderColor write FFocusedBorderColor;
+
+
+
+end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+    RegisterComponents('TJxEdit', [TJxEdit]);
+end;
+
+constructor TJxEdit.Create(AOwner: TComponent);
+begin
+    inherited Create(AOwner);
+    FCanvas := TControlCanvas.Create;
+    TControlCanvas(FCanvas).Control := Self;
+end;
+
+destructor TJxEdit.Destroy();
+begin
+    FCanvas.Free;
+    inherited Destroy();
+end;
+
+
+procedure TJxEdit.WMPaint(var Message: TWMPaint);
+begin
+    inherited;
+    PaintWindow(Message.DC);
+end;
+
+
+procedure TJxEdit.PaintWindow(DC: HDC);
+
+begin
+    FCanvas.Lock;
+    try
+        FCanvas.Handle := DC;
+        try
+            TControlCanvas(FCanvas).UpdateTextFlags;
+            Paint;
+        finally
+            FCanvas.Handle := 0;
+        end;
+    finally
+        FCanvas.Unlock;
+    end;
+    inherited;
+end;
+
+procedure TJxEdit.SetBorderColor(const Value: TColor);
+begin
+  FBorderColor := Value;
+end;
+
+procedure TJxEdit.Paint;
+var
+  l_mX,l_mY: Integer;
+begin
+    if not Focused then
+    begin
+      FCanvas.Pen.Color := Self.FBorderColor;
+    end
+    else
+    begin
+      FCanvas.Pen.Color := Self.FFocusedBorderColor;
+    end;
+    l_mX := Self.Width - 1;
+    l_mY := Self.Height - 1;
+    FCanvas.MoveTo(0,0);
+    FCanvas.LineTo(l_mX, 0);
+    FCanvas.LineTo(l_mX, l_mY);
+    FCanvas.LineTo(0, l_mY);
+    FCanvas.LineTo(0, 0);
+    inherited;
+end;
+
+
+
+
+end.

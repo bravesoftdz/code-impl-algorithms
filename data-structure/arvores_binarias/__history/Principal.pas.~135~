@@ -77,7 +77,7 @@ var
   Estados: array of TEstado;
   Indice: Integer;
 begin
-  SetLength( Estados, 9 );
+  SetLength( Estados, 10 );
 
   Estados[0].Codigo:= 8;
   Estados[0].Sigla:= 'SC';
@@ -87,7 +87,7 @@ begin
   Estados[1].Sigla:= '';
   Estados[1].Nome:= '';
 
-  Estados[2].Codigo:= 10;
+  Estados[2].Codigo:= 9;
   Estados[2].Sigla:= '';
   Estados[2].Nome:= '';
 
@@ -99,21 +99,26 @@ begin
   Estados[4].Sigla:= '';
   Estados[4].Nome:= '';
 
-  Estados[5].Codigo:= 14;
+  Estados[5].Codigo:= 12;
   Estados[5].Sigla:= '';
   Estados[5].Nome:= '';
 
-  Estados[6].Codigo:= 4;
+  Estados[6].Codigo:= 14;
   Estados[6].Sigla:= '';
   Estados[6].Nome:= '';
 
-  Estados[7].Codigo:= 7;
+  Estados[7].Codigo:= 4;
   Estados[7].Sigla:= '';
   Estados[7].Nome:= '';
 
-  Estados[8].Codigo:= 13;
+  Estados[8].Codigo:= 5;
   Estados[8].Sigla:= '';
   Estados[8].Nome:= '';
+
+  Estados[9].Codigo:= 13;
+  Estados[9].Sigla:= '';
+  Estados[9].Nome:= '';
+
   {
   Estado.Codigo:= StrToInt( EdtCodigo.Text );
   Estado.Sigla:= EdtSiglaEstado.Text;
