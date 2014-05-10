@@ -30,7 +30,7 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('Componente do Johni', [TJohniEdit]);
+  RegisterComponents('Johni', [TJohniEdit]);
 end;
 
 { TJohniEdit }

@@ -1,8 +1,8 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Form1'
-  ClientHeight = 288
+  Caption = 'Express'#245'es regulares'
+  ClientHeight = 444
   ClientWidth = 451
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,42 +10,52 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 24
-    Top = 7
+    Top = 119
     Width = 33
     Height = 13
     Caption = 'Campo'
   end
   object Label2: TLabel
     Left = 26
-    Top = 63
+    Top = 175
     Width = 31
     Height = 13
     Caption = 'RegEx'
   end
+  object Label3: TLabel
+    Left = 21
+    Top = 18
+    Width = 126
+    Height = 13
+    Caption = 'Informe a placa do veiculo'
+  end
   object Edit1: TEdit
-    Left = 24
-    Top = 26
-    Width = 121
+    Left = 26
+    Top = 138
+    Width = 231
     Height = 21
     TabOrder = 0
     Text = 'EdtCampo'
   end
   object Edit2: TEdit
-    Left = 24
-    Top = 82
-    Width = 121
+    Left = 26
+    Top = 194
+    Width = 231
     Height = 21
     TabOrder = 1
     Text = 'Edit2'
   end
   object BitBtn1: TBitBtn
-    Left = 184
-    Top = 24
+    Left = 298
+    Top = 134
     Width = 75
     Height = 25
     Caption = 'Validar 01'
@@ -53,8 +63,8 @@ object Form1: TForm1
     OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
-    Left = 184
-    Top = 80
+    Left = 314
+    Top = 196
     Width = 75
     Height = 25
     Caption = 'Validar 02'
@@ -62,8 +72,8 @@ object Form1: TForm1
     OnClick = BitBtn2Click
   end
   object Button1: TButton
-    Left = 336
-    Top = 49
+    Left = 346
+    Top = 165
     Width = 75
     Height = 25
     Caption = 'Button1'
@@ -71,8 +81,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 336
-    Top = 80
+    Left = 346
+    Top = 196
     Width = 75
     Height = 25
     Caption = 'Button2'
@@ -80,8 +90,8 @@ object Form1: TForm1
     OnClick = Button2Click
   end
   object Memo1: TMemo
-    Left = 24
-    Top = 152
+    Left = 18
+    Top = 252
     Width = 185
     Height = 105
     Lines.Strings = (
@@ -90,10 +100,19 @@ object Form1: TForm1
     TabOrder = 6
   end
   object Memo2: TMemo
-    Left = 226
-    Top = 152
+    Left = 225
+    Top = 244
     Width = 185
     Height = 105
     TabOrder = 7
+  end
+  object EdtPlacaVeiculo: TEdit
+    Left = 21
+    Top = 37
+    Width = 126
+    Height = 21
+    TabOrder = 8
+    OnEnter = EdtPlacaVeiculoEnter
+    OnExit = EdtPlacaVeiculoExit
   end
 end

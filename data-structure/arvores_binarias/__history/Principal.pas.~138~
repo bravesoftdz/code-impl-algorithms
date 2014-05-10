@@ -114,7 +114,6 @@ begin
   Estados[8].Codigo:= 13;
   Estados[8].Sigla:= '';
   Estados[8].Nome:= '';
-
   {
   Estado.Codigo:= StrToInt( EdtCodigo.Text );
   Estado.Sigla:= EdtSiglaEstado.Text;

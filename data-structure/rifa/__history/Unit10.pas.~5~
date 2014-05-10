@@ -22,6 +22,7 @@ type
 
   TForm10 = class(TForm)
     Panel1: TPanel;
+    Button1: TButton;
     Panel2: TPanel;
     BitBtn1: TBitBtn;
     EdtNumero: TEdit;
@@ -34,9 +35,6 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Memo1: TMemo;
-    SpeedButton1: TSpeedButton;
-    Sorteio: TBitBtn;
-    BitBtn3: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);

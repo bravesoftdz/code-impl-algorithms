@@ -75,9 +75,10 @@ implementation
 procedure TForm2.BitBtn1Click(Sender: TObject);
 var
   Estados: array of TEstado;
+  Estado: TEstado;
   Indice: Integer;
 begin
-  SetLength( Estados, 9 );
+{  SetLength( Estados, 9 );
 
   Estados[0].Codigo:= 8;
   Estados[0].Sigla:= 'SC';
@@ -87,7 +88,7 @@ begin
   Estados[1].Sigla:= '';
   Estados[1].Nome:= '';
 
-  Estados[2].Codigo:= 9;
+  Estados[2].Codigo:= 10;
   Estados[2].Sigla:= '';
   Estados[2].Nome:= '';
 
@@ -114,15 +115,16 @@ begin
   Estados[8].Codigo:= 13;
   Estados[8].Sigla:= '';
   Estados[8].Nome:= '';
+  }
 
-  {
   Estado.Codigo:= StrToInt( EdtCodigo.Text );
   Estado.Sigla:= EdtSiglaEstado.Text;
   Estado.Nome:= EdtNomeEstado.Text;
-  }
 
+  {
   for Indice := Low(Estados) to High(Estados) do
     Inserir( Estados[Indice], Raiz );
+  }
 end;
 
 procedure TForm2.BitBtn2Click(Sender: TObject);

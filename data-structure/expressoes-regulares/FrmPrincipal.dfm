@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Express'#245'es regulares'
-  ClientHeight = 444
+  ClientHeight = 390
   ClientWidth = 451
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -40,7 +40,7 @@ object Form1: TForm1
   object Edit1: TEdit
     Left = 26
     Top = 138
-    Width = 121
+    Width = 231
     Height = 21
     TabOrder = 0
     Text = 'EdtCampo'
@@ -48,14 +48,14 @@ object Form1: TForm1
   object Edit2: TEdit
     Left = 26
     Top = 194
-    Width = 121
+    Width = 231
     Height = 21
     TabOrder = 1
     Text = 'Edit2'
   end
   object BitBtn1: TBitBtn
-    Left = 194
-    Top = 140
+    Left = 274
+    Top = 134
     Width = 75
     Height = 25
     Caption = 'Validar 01'
@@ -63,7 +63,7 @@ object Form1: TForm1
     OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
-    Left = 194
+    Left = 314
     Top = 196
     Width = 75
     Height = 25
@@ -72,8 +72,8 @@ object Form1: TForm1
     OnClick = BitBtn2Click
   end
   object Button1: TButton
-    Left = 346
-    Top = 165
+    Left = 368
+    Top = 18
     Width = 75
     Height = 25
     Caption = 'Button1'
@@ -81,8 +81,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 346
-    Top = 196
+    Left = 368
+    Top = 49
     Width = 75
     Height = 25
     Caption = 'Button2'
@@ -90,9 +90,9 @@ object Form1: TForm1
     OnClick = Button2Click
   end
   object Memo1: TMemo
-    Left = 18
+    Left = 34
     Top = 252
-    Width = 185
+    Width = 175
     Height = 105
     Lines.Strings = (
       '^\d{5}-\d{3}$'
@@ -101,7 +101,7 @@ object Form1: TForm1
   end
   object Memo2: TMemo
     Left = 225
-    Top = 244
+    Top = 252
     Width = 185
     Height = 105
     TabOrder = 7
