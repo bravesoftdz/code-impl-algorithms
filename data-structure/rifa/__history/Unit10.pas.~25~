@@ -6,7 +6,7 @@ uses
   System.Math,
   Generics.Collections,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls;
 
 type
 
@@ -21,12 +21,25 @@ type
 
 
   TForm10 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
     BitBtn1: TBitBtn;
     EdtNumero: TEdit;
     EdtNome: TEdit;
     EdtEndereco: TEdit;
     EdtTelefone: TEdit;
     BitBtn2: TBitBtn;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Memo1: TMemo;
+    SpeedButton1: TSpeedButton;
+    Sorteio: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    BitBtn5: TBitBtn;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -101,5 +114,33 @@ procedure TForm10.FormDestroy(Sender: TObject);
 begin
   FreeAndNil( VendasRifa );
 end;
+
+
+function RetornarCampo( const ALinha: string; const ACaractereSeparador: Char;
+  const ACampo: Integer): string;
+var
+  Campo: TStringList;
+begin
+  Campo:= TStringList.Create();
+  try
+    Campo.Delimiter:= ACaractereSeparador;
+    Campo.StrictDelimiter:= False;
+    Campo.DelimitedText:= ALinha;
+
+    Result:= EmptyStr;
+
+    if (  ) then
+    
+
+
+
+  finally
+    FreeAndNil( Campo );
+  end;
+
+
+end;
+
+
 
 end.

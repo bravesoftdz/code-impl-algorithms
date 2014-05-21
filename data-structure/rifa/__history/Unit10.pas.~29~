@@ -67,30 +67,6 @@ implementation
 
 { TRifa }
 
-
-function RetornarCampo( const ALinha: string; const ACaractereSeparador: Char;
-  const ACampo: Integer): string;
-var
-  Campo: TStringList;
-begin
-  Campo:= TStringList.Create();
-  try
-    Campo.Delimiter:= ACaractereSeparador;
-    Campo.StrictDelimiter:= False;
-    Campo.DelimitedText:= ALinha;
-
-    Result:= EmptyStr;
-
-    if ( Campo.Count > 0 ) and (ACampo > 0) and ( ACampo <= Campo.Count ) then
-      Result:= Campo.Strings[ Pred( ACampo ) ];
-
-  finally
-    FreeAndNil( Campo );
-  end;
-
-end;
-
-
 constructor TRifa.Create(const ANome, AEndereco, ATelefone: string);
 begin
   Nome:= ANome;
@@ -134,10 +110,10 @@ procedure TForm10.Button1Click(Sender: TObject);
 begin
 
   ShowMessage( RetornarCampo( EdtNumero.Text, ';', 0 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 1 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 2 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 3 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 4 ) );
+  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 0 ) );
+  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 0 ) );
+  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 0 ) );
+  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 0 ) );
 
 end;
 

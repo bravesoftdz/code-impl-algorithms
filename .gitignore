@@ -22,3 +22,7 @@ Win32/*.*
 
 __history/*.*
 Test/__history/*.*
+
+data-structure/rifa/__history/*.*
+data-structure/rifa/*.exe
+data-structure/rifa/*.dcu

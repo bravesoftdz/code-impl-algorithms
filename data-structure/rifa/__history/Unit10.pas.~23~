@@ -22,7 +22,6 @@ type
 
   TForm10 = class(TForm)
     Panel1: TPanel;
-    Button1: TButton;
     Panel2: TPanel;
     BitBtn1: TBitBtn;
     EdtNumero: TEdit;
@@ -34,6 +33,13 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Memo1: TMemo;
+    SpeedButton1: TSpeedButton;
+    Sorteio: TBitBtn;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    BitBtn5: TBitBtn;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -108,5 +114,28 @@ procedure TForm10.FormDestroy(Sender: TObject);
 begin
   FreeAndNil( VendasRifa );
 end;
+
+
+function RetornarCampo( const ALinha: string; const ACaractereSeparador: Char;
+  const ACampo: Integer): string;
+var
+  Campo: TStringList;
+begin
+  Campo:= TStringList.Create();
+  try
+    Campo.Delimiter:= ACaractereSeparador;
+    Campo.StrictDelimiter:= False;
+    Campo.DelimitedText:=’Marco * Antonio Salles’
+
+
+
+  finally
+    FreeAndNil( Campo );
+  end;
+
+
+end;
+
+
 
 end.
