@@ -39,15 +39,20 @@ type
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
-    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
   private
+    const SEP = ':';
+
     { Private declarations }
     procedure AdicionaHash( const Chave: Integer );
+
 
   public
     { Public declarations }
@@ -127,6 +132,78 @@ begin
   Sorteio:= Random( Length( TabelaHash ) );
 
   ShowMessage( VendasRifa.Items[TabelaHash[Sorteio]].Nome );
+
+end;
+
+procedure TForm10.BitBtn3Click(Sender: TObject);
+var
+  Key: Integer;
+  Rifa: TRifa;
+begin
+  Memo1.Lines.Clear;
+
+  for Key in VendasRifa.Keys do
+  begin
+
+
+    Rifa:= VendasRifa[Key];
+    Memo1.Lines.Add( Key.ToString + ' - Nome: ' + Rifa.Nome + ' Endereço: ' +
+      Rifa.Endereco + ' Telefone: ' + Rifa.Telefone );
+
+  end;
+end;
+
+procedure TForm10.BitBtn4Click(Sender: TObject);
+var
+  Rifa: TRifa;
+
+  Arquivo: TStringList;
+  Linha: Integer;
+begin
+
+  Arquivo:= TStringList.Create;
+  try
+    Arquivo.LoadFromFile( 'd:\rifas.txt' );
+
+    VendasRifa.Clear;
+
+    for Linha:= 0 to Pred(Arquivo.Count) do
+    begin
+      VendasRifa.Add(
+        StrToInt( RetornarCampo( Arquivo.Strings[Linha], SEP, 1) ),
+          TRifa.Create( RetornarCampo( Arquivo.Strings[Linha], SEP, 2),
+            RetornarCampo( Arquivo.Strings[Linha], SEP, 3),
+            RetornarCampo( Arquivo.Strings[Linha], SEP, 4) ) );
+    end;
+
+  finally
+    FreeAndNil( Arquivo );
+  end;
+
+end;
+
+procedure TForm10.BitBtn5Click(Sender: TObject);
+var
+  Rifa: TRifa;
+
+  Key: Integer;
+
+  Arquivo: TStringList;
+begin
+
+  Arquivo:= TStringList.Create;
+  try
+    for Key in VendasRifa.Keys do
+    begin
+      Rifa:= VendasRifa[Key];
+      Arquivo.Add( Key.ToString + SEP + Rifa.Nome + SEP + Rifa.Endereco + SEP + Rifa.Telefone );
+
+    end;
+    Arquivo.SaveToFile( 'd:\rifas.txt' );
+
+  finally
+    FreeAndNil( Arquivo );
+  end;
 
 end;
 
