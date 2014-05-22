@@ -1344,5 +1344,14 @@ object Form10: TForm10
       TabOrder = 5
       OnClick = BitBtn2Click
     end
+    object Button1: TButton
+      Left = 272
+      Top = 32
+      Width = 75
+      Height = 25
+      Caption = 'Button1'
+      TabOrder = 6
+      OnClick = Button1Click
+    end
   end
 end

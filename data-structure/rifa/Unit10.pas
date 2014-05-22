@@ -39,6 +39,7 @@ type
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -71,6 +72,94 @@ implementation
 {$R *.dfm}
 
 { TRifa }
+
+procedure GravarArquivoTextFile();
+var
+  // Variável que representa o arquivo
+  Arquivo: TextFile;
+begin
+  // Associa o nome arquivo em disco com a variável
+  AssignFile(Arquivo, 'd:\dados.txt');
+
+  // Abre o arquivo para ser manipulado
+  Rewrite(Arquivo);
+
+  // Escreve uma linha no arquivo
+  Writeln(Arquivo, 'Essa é uma linha');
+
+  // Fehca o arquivo aberto
+  CloseFile(Arquivo);
+end;
+
+procedure LerArquivoTextFile();
+var
+  // Variável que representa o arquivo
+  Arquivo: TextFile;
+
+  // Auxiliar para gravas os dados da linha
+  Linha: string;
+begin
+  // Associa o nome arquivo em disco com a variável
+  AssignFile(Arquivo, 'd:\dados.txt');
+
+  Reset(Arquivo);
+
+  // Percorre o arquvo até o seu final
+  while (not Eof(Arquivo)) do
+  begin
+    // Le uma linha do arquivo
+    Readln(Arquivo, Linha);
+
+    ShowMessage( Linha );
+  end;
+
+  // Fehca o arquivo aberto
+  CloseFile(Arquivo)
+end;
+
+procedure GravarArquivoStringList();
+var
+  // variável que representa o arquivo
+  Arquivo: TStringList;
+begin
+  // Cria um objeto do tipo TStringList
+  Arquivo:= TStringList.Create;
+  try
+    // Adiciona uma linha na lista
+    Arquivo.Add( 'Essa é uma linha' );
+
+    // Salva o arquivo em disco
+    Arquivo.SaveToFile('d:\dados.txt');
+  finally
+    // Destroi o objeto
+    FreeAndNil( Arquivo );
+  end;
+
+end;
+
+procedure LerArquivoStringList();
+var
+  // variável que representa o arquivo
+  Arquivo: TStringList;
+  Indice: Integer;
+begin
+  // Cria um objeto do tipo TStringList
+  Arquivo:= TStringList.Create;
+  try
+
+    // Abre o arquivo em disco
+    Arquivo.LoadFromFile('d:\dados.txt');
+
+    // Percorre as linhas do arquivo
+    for Indice := 0 to Pred(Arquivo.Count) do
+      ShowMessage( Arquivo.Strings[Indice] );
+
+  finally
+    // Destroi o objeto
+    FreeAndNil( Arquivo );
+  end;
+
+end;
 
 
 function RetornarCampo( const ALinha: string; const ACaractereSeparador: Char;
@@ -210,11 +299,9 @@ end;
 procedure TForm10.Button1Click(Sender: TObject);
 begin
 
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 0 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 1 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 2 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 3 ) );
-  ShowMessage( RetornarCampo( EdtNumero.Text, ';', 4 ) );
+  GravarArquivoStringList;
+  LerArquivoStringList;
+
 
 end;
 
