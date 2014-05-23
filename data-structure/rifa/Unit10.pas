@@ -39,7 +39,8 @@ type
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
-    Button1: TButton;
+    SaveDialog1: TSaveDialog;
+    OpenDialog1: TOpenDialog;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -248,7 +249,12 @@ var
 
   Arquivo: TStringList;
   Linha: Integer;
+  NomeDoArquivo: string;
 begin
+  if (OpenDialog1.Execute ) then
+    NomeDoArquivo:= OpenDialog1.FileName;
+
+
 
   Arquivo:= TStringList.Create;
   try
@@ -278,7 +284,11 @@ var
   Key: Integer;
 
   Arquivo: TStringList;
+
+  NomeDoArquivo: string;
 begin
+  if (SaveDialog1.Execute()) then
+    NomeDoArquivo:= SaveDialog1.FileName;
 
   Arquivo:= TStringList.Create;
   try

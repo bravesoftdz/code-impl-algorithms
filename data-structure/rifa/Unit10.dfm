@@ -509,7 +509,7 @@ object Form10: TForm10
       Width = 75
       Height = 65
       BiDiMode = bdLeftToRight
-      Caption = 'Abrir'
+      Caption = 'Importar'
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -619,7 +619,7 @@ object Form10: TForm10
       Top = 168
       Width = 75
       Height = 65
-      Caption = 'Salvar'
+      Caption = 'Exportar'
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFEFEFE
@@ -1344,14 +1344,13 @@ object Form10: TForm10
       TabOrder = 5
       OnClick = BitBtn2Click
     end
-    object Button1: TButton
-      Left = 272
-      Top = 32
-      Width = 75
-      Height = 25
-      Caption = 'Button1'
-      TabOrder = 6
-      OnClick = Button1Click
-    end
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 272
+    Top = 224
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 392
+    Top = 216
   end
 end
