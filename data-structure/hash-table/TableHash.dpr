@@ -1,0 +1,17 @@
+program TableHash;
+
+uses
+  Vcl.Forms,
+  FrmPrincipal in 'FrmPrincipal.pas' {Form10},
+  Computador in 'Computador.pas',
+  Unit1 in 'Unit1.pas',
+  Unit2 in 'Unit2.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm10, Form10);
+  Application.Run;
+end.
