@@ -3,8 +3,9 @@ program TableHash;
 uses
   Vcl.Forms,
   FrmPrincipal in 'FrmPrincipal.pas' {Form10},
-  HashingFechado in 'HashingFechado.pas',
-  HashingAberto in 'HashingAberto.pas';
+
+  Unit1 in 'Unit1.pas',
+  Unit2 in 'Unit2.pas';
 
 {$R *.res}
 

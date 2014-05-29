@@ -1,10 +1,10 @@
-unit Unit1;
+unit HashingFechado;
 
 interface
 
 type
   THashTable = class
-  strict private type
+  public type
     // Dados de um computador
     TComputador = record
       Codigo: Integer;
@@ -14,7 +14,7 @@ type
     end;
 
   strict private
-    const LEN_VET = 100;
+    const LEN_VET = 17;
 
   strict private
     HashTable: array [0..LEN_VET] of TComputador;

@@ -1,10 +1,13 @@
-unit Unit2;
+unit HashingAberto;
 
 interface
 
+uses
+  Vcl.Dialogs;
+
 type
   THashTable = class
-  strict private type
+  public type
     // Dados de um computador
     PComputador = ^TComputador;
     TComputador = record
@@ -17,7 +20,7 @@ type
     end;
 
   strict private
-    const LEN_VET = 100;
+    const LEN_VET = 17;
 
   strict private
     HashTable: array [0..LEN_VET] of TComputador;
@@ -30,6 +33,8 @@ type
   public
     procedure Adicionar( const AComputador: TComputador );
     function Pesquisar( const ACodigo: Integer ): TComputador;
+
+    procedure ImprimirComputadores();
   end;
 
 
@@ -43,8 +48,6 @@ uses
 procedure THashTable.Adicionar(const AComputador: TComputador);
 var
   IndiceHash: Integer;
-  Indice: Integer;
-
   PAuxiliar: PComputador;
 begin
   // Cálculo do hash
@@ -63,17 +66,15 @@ begin
         raise Exception.Create('Código não foi cadastrado');
 
       PAuxiliar:= PAuxiliar.Apontador;
-
     end;
+
+    New(PAuxiliar);
 
     PAuxiliar.Codigo:= AComputador.Codigo;
     PAuxiliar.IP:= AComputador.IP;
     PAuxiliar.Descricao:= AComputador.Descricao;
     PAuxiliar.Setor:= AComputador.Setor;
     PAuxiliar.Apontador:= nil;
-
-    // Tabela hash está cheia
-    raise Exception.Create('Overflow na tabela hash');
 
   end else
     HashTable[IndiceHash]:= AComputador;
@@ -96,10 +97,20 @@ begin
     ( ACodigo mod LEN_VET );
 end;
 
+procedure THashTable.ImprimirComputadores;
+var
+  Indice: Integer;
+begin
+
+  for Indice := Low(HashTable) to High(HashTable) do
+  begin
+    ShowMessage( HashTable[Indice].Descricao );
+  end;
+end;
+
 function THashTable.Pesquisar(const ACodigo: Integer): TComputador;
 var
   IndiceHash: Integer;
-  Indice: Integer;
 
   PAuxiliar: PComputador;
 begin
@@ -108,34 +119,35 @@ begin
   // Cálculo do hash
   IndiceHash:= Hashing( ACodigo );
 
-  if ( HashTable[ IndiceHash ].Codigo > 0 ) then
+  if ( HashTable[ IndiceHash ].Codigo <= 0 ) then
   begin
 
-    // Encontra o próximo ponteiro disponível para inserir no registro
-    PAuxiliar:= HashTable[ IndiceHash ].Apontador;
-    while ( PAuxiliar <> nil ) do
-    begin
+    if ( HashTable[ IndiceHash ].Codigo = ACodigo ) then
+      Exit( HashTable[ IndiceHash ] )
+    else begin
 
-      // Verifica se o cadastro não foi realizado
-      if ( PAuxiliar.Codigo = ACodigo ) then
+      // Encontra o próximo ponteiro disponível para inserir no registro
+      PAuxiliar:= HashTable[ IndiceHash ].Apontador;
+      while ( PAuxiliar <> nil ) do
       begin
 
-        Result.Codigo:= PAuxiliar.Codigo;
-        Result.IP:= PAuxiliar.IP;
-        Result.Descricao:= PAuxiliar.Descricao;
-        Result.Setor:= PAuxiliar.Setor;
+        // Verifica se o cadastro não foi realizado
+        if ( PAuxiliar.Codigo = ACodigo ) then
+        begin
 
-        Exit();
+          Result.Codigo:= PAuxiliar.Codigo;
+          Result.IP:= PAuxiliar.IP;
+          Result.Descricao:= PAuxiliar.Descricao;
+          Result.Setor:= PAuxiliar.Setor;
+
+          Exit();
+        end;
+
+        PAuxiliar:= PAuxiliar.Apontador;
       end;
 
-      PAuxiliar:= PAuxiliar.Apontador;
     end;
-
-    // Tabela hash está cheia
-    raise Exception.Create('Overflow na tabela hash');
-
-  end else
-    Exit(HashTable[IndiceHash]);
+  end;
 
 end;
 

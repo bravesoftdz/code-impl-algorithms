@@ -1,0 +1,75 @@
+unit TestHashingFechado;
+
+interface
+uses
+  HashingFechado,
+  DUnitX.TestFramework;
+
+type
+
+  [TestFixture]
+  TTestHashingFechado = class(TObject)
+  strict private
+    HashTable: HashingFechado.THashTable;
+
+    function RetornaComupadorPadrao(
+      const ACodigo: Integer ): HashingFechado.THashTable.TComputador;
+  public
+
+    [Setup]
+    procedure Setup;
+    [TearDown]
+    procedure TearDown;
+
+    [Test]
+    procedure TestInit();
+
+  end;
+
+implementation
+
+uses
+  System.SysUtils;
+
+
+{ TestHashingFechado }
+
+function TTestHashingFechado.RetornaComupadorPadrao(
+  const ACodigo: Integer): HashingFechado.THashTable.TComputador;
+begin
+
+  Result.Codigo:= ACodigo;
+  Result.IP:= '192.168.0.' + ACodigo.ToString();
+  Result.Descricao:= 'PC MESA ' + ACodigo.ToString();
+  Result.Setor:= 'LOJA';
+
+end;
+
+
+
+
+procedure TTestHashingFechado.Setup;
+begin
+  HashTable:= HashingFechado.THashTable.Create();
+end;
+
+procedure TTestHashingFechado.TearDown;
+begin
+  FreeAndNil( HashTable );
+end;
+
+procedure TTestHashingFechado.TestInit;
+begin
+  HashTable.Adicionar( RetornaComupadorPadrao( 1 ) );
+  HashTable.Adicionar( RetornaComupadorPadrao( 2 ) );
+  HashTable.Adicionar( RetornaComupadorPadrao( 3 ) );
+  HashTable.Adicionar( RetornaComupadorPadrao( 50 ) );
+  HashTable.Adicionar( RetornaComupadorPadrao( 45 ) );
+
+  ShowMessage( HashTable.Pesquisar(50).Descricao );
+  ShowMessage( HashTable.Pesquisar(9).Descricao );
+end;
+
+initialization
+  TDUnitX.RegisterTestFixture(TTestHashingFechado);
+end.
