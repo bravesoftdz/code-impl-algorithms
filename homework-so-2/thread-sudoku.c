@@ -82,7 +82,12 @@ void pega_coluna(int *numeros, unsigned short coluna) {
 void pega_linha(int *numeros, unsigned short linha) {
 
     int fator_linha[TAMANHO] = {0, 9, 18, 27, 36, 45, 54, 63, 72};    
-
+    
+    // int i;
+    // fator = (linha - 1) * TAMANHO
+    // for(i=fator; i<(fator + TAMANHO); i++) {
+        numeros[i]= char_to_int(sudoku[i]);
+    //}
     int i;
     for (i = 0; i < TAMANHO; i++) {
         int indice = i + fator_linha[linha-1];
