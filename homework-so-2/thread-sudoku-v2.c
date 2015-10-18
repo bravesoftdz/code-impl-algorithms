@@ -29,6 +29,7 @@ int char_to_int(char c)
 
 // Pega um numero N do diagrama e salva o byte 0x01<<(N-1) em um vetor buf.
 void * step1(void *arg_) {
+
     int arg = (intptr_t) arg_;
     while (1) {
         buf[arg] = buf[arg] << char_to_int(sudoku[arg])-1;
@@ -42,6 +43,7 @@ void * step1(void *arg_) {
 // Faz o XOR bit-a-bit entre grupos de 3 bytes do vetor buf,
 // correspondendo aos 1/3s de linha e coluna, e salva o resultado no vetor buf2.
 void * step2(void *arg_) {
+
     int arg = (intptr_t) arg_;
     while (1) {
         if (arg < 27) { // 1/3s de linha (esq p dir, cima p baixo)
@@ -70,6 +72,7 @@ void * step2(void *arg_) {
 // e compara o resultado com 0xFF (1111 1111). Qualquer valor
 // diferente desse significa um erro.
 void * step3(void *arg_) {
+
     int arg = (intptr_t) arg_;
     while (1) {
         if (arg < 9) { // linhas (cima p baixo)
@@ -84,15 +87,15 @@ void * step3(void *arg_) {
         // comparacao
         if (buf2[arg] != 0xFF) {
             if (arg < 9) {
-                printf("Erro na linha %d!\n", arg + 1);
+                printf("Erro na linha %d (Thread %d)\n", arg + 1, arg + 1);
                 errado++;
             }
             if (arg >=9 && arg < 18) {
-                printf("Erro na coluna %d!\n", arg-9 + 1);
+                printf("Erro na coluna %d (Thread %d)\n", arg-9 + 1, arg + 1);
                 errado++;
             }
             if (arg >= 18) {
-                printf("Erro no quadro %d!\n", arg-18 + 1);
+                printf("Erro no quadro %d (Thread %d)\n", arg-18 + 1, arg + 1);
                 errado++;
             }
         }
@@ -126,10 +129,6 @@ int main(int argc, char * argv[]) {
     for (step = 0; step < 3; step++) {
         for (i = 0; i < batch[step]; i++) {
             pthread_create(&threads[i], NULL, job[step], (void *) (intptr_t) i);
-
-            printf("Job index %d\n", step);
-            printf("Thread index on array %d\n", i);
-
         }
         for (i=0; i < batch[step]; i++) {
             pthread_join(threads[i], NULL);
