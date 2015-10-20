@@ -6,6 +6,10 @@ build-v2:
 	@echo Compilando Sudoku V2
 	gcc -pthread thread-sudoku-v2.c -o sudoku
 
+build-v3:
+	@echo Compilando Sudoku V3
+	gcc -pthread thread-sudoku-v3.c -o sudoku
+
 run3-certo:
 	./sudoku 3 534678912672195348198342567859761423426853791713924856961537284287419635345286179
 
